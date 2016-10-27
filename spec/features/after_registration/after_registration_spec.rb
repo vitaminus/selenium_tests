@@ -1,7 +1,7 @@
 require 'spec_helper'
 require "selenium-webdriver"
 
-describe "After registration", integration: true do
+describe 'After registration' do
 
   before(:all) do
     @d = driver
@@ -17,6 +17,16 @@ describe "After registration", integration: true do
 
   after(:all) do
     quit
+  end
+
+  it 'Chars limit in field Name' do
+    register
+    go_to_profile_settings
+    profile_change_name
+    sleep 0.5
+    expect(find_el(:class, "settings-field-group__tooltip-message").text).to include('Username should be 40 chars maximum')
+    exit_profile_settings
+    logout
   end
 
 end

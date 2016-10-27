@@ -134,6 +134,28 @@ module FeatureSeleniumHelpers
     find_el(:link, "LOG IN WITH #{name.upcase}").click
   end
 
+  def go_to_profile_settings
+    @wait.until { find_el(:class, "aside__panel-avatar").displayed? }
+    find_el(:class, "aside__panel-avatar").click
+    @wait.until { find_el(:class, "aside__dropdown-link--settings").displayed? }
+    find_el(:class, "aside__dropdown-link--settings").click
+  end
+
+  def profile_change_name
+    @wait.until { find_el(:class, "settings__name-cell").displayed? }
+    find_el(:class, "settings__name-cell").click
+    @wait.until { find_el(:class, "settings-field-group__input--name").displayed? }
+    find_el(:class, "settings-field-group__input--name").click
+    find_el(:class, "settings-field-group__input--name").send_keys('012345678901234567890123456789012345678901')
+    find_el(:class, "settings-field-group__textarea--about").click
+  end
+
+  def exit_profile_settings
+    find_el(:class, "settings-field-group__cancel-btn").click
+    @wait.until { find_el(:class, "settings__close-btn").displayed? }
+    find_el(:class, "settings__close-btn").click
+  end
+
   def continue
     sleep 0.5
     find_el(:id, "step-card__next-step").click
