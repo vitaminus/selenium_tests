@@ -4,16 +4,16 @@ module FeatureSeleniumHelpers
   end
 
   def window_size
-  	target_size = Selenium::WebDriver::Dimension.new(1024, 2048)
+    target_size = Selenium::WebDriver::Dimension.new(1024, 2048)
     @d.manage.window.size = target_size
   end
 
   def wait
-  	Selenium::WebDriver::Wait.new(:timeout => 15)
+    Selenium::WebDriver::Wait.new(:timeout => 15)
   end
 
   def long_wait
-  	Selenium::WebDriver::Wait.new(:timeout => 180)
+    Selenium::WebDriver::Wait.new(:timeout => 180)
   end
 
   def navigate_to
@@ -26,54 +26,54 @@ module FeatureSeleniumHelpers
       when 'prod'
         "https://www.rewardexpert.com"
       end
-  	@d.navigate.to (url)
+    @d.navigate.to (url)
   end
 
   def quit
-  	@d.quit
+    @d.quit
   end
 
   def new_user
     "selenium_#{[*('a'..'z'),*('0'..'9')].shuffle[0,15].join}@selenium.com"
   end
 
-	def test_user
+  def test_user
     {email: 'vitamin@vitamin.com', passwd: '123456789', name: 'vitaminus'}
   end
 
   ####### Autoupdate users ########
 
   def starwood_user
-  	{login: '44950701797', passwd: '@believeU2'}
+    { login: '44950701797', passwd: '@believeU2' }
   end
 
   def aeroplan_user
-  	{login: '970 001 715', passwd: '123A456b789C'}
+    { login: '970 001 715', passwd: '123A456b789C' }
   end
 
   def executive_club_user
     { login: 'vitaliy.t@rewardexpert.com', passwd: '123456789a' }
   end
 
-	def alaska_mileage_plan_user
-		{ login: '170771650', passwd: '123A456b789C' }
-	end
+  def alaska_mileage_plan_user
+    { login: '170771650', passwd: '123A456b789C' }
+  end
 
-	def jal_user
-		{ login: '405236319', passwd: '121618' }
-	end
+  def jal_user
+    { login: '405236319', passwd: '121618' }
+  end
 
-	def iberia_user
-		{ login: '73546251', passwd: '484654' }
-	end
+  def iberia_user
+    { login: '73546251', passwd: '484654' }
+  end
 
-	def lufthansa_user
-		{ login: 'vitaminus', passwd: '123A456b789C' }
-	end
+  def lufthansa_user
+    { login: 'vitaminus', passwd: '123A456b789C' }
+  end
 
-	def krisflyer_user
-		{ login: '8820674659', passwd: '121618' }
-	end
+  def krisflyer_user
+    { login: '8820674659', passwd: '121618' }
+  end
 
   ################### Helpers ###########################
 
@@ -93,7 +93,7 @@ module FeatureSeleniumHelpers
     @d.find_elements(by, cl)
   end
 
-	#######################################################
+  #######################################################
 
   def code_word
     lockup_codeword = find_els(:css, "input#lockup_codeword")
@@ -105,7 +105,7 @@ module FeatureSeleniumHelpers
   end
 
   def sign_in
-  	@wait.until { find_el(:link_text, "LOG IN").displayed? }
+    @wait.until { find_el(:link_text, "LOG IN").displayed? }
     find_el(:link_text, "LOG IN").click
     find_el(:id, "auth__email").send_keys(test_user[:email])
     find_el(:id, "auth__password").send_keys(test_user[:passwd])
@@ -162,7 +162,7 @@ module FeatureSeleniumHelpers
   end
 
   def fill_in_waypoint(from, to)
-  	@wait.until { find_el(:class, "location-field__input--from").displayed? }
+    @wait.until { find_el(:class, "location-field__input--from").displayed? }
     find_el(:class, "location-field__input--from").send_keys(from)
 
     @wait.until {find_el(:class, "location-field__short-city").displayed?}
@@ -184,14 +184,14 @@ module FeatureSeleniumHelpers
   end
 
   def monthly_spending
-  	@wait.until { find_el(:id, "range-slider__input").displayed? }
+    @wait.until { find_el(:id, "range-slider__input").displayed? }
     expect(find_el(:class, "step-card__main-heading").text).to include("Your everyday credit card purchases = miles you'll earn.")
     continue
   end
 
   def choose_strategy_by_name name
-  	@long_wait.until { find_el(:class, "strategies__list").displayed? }
-  	@strategies_list = find_el(:class, "strategies__list")
+    @long_wait.until { find_el(:class, "strategies__list").displayed? }
+    @strategies_list = find_el(:class, "strategies__list")
        
     @strategies_list.find_elements(:class, "strategy").each do |s|
       logo = s.find_element(:class, 'strategy__program-logo')
@@ -215,7 +215,7 @@ module FeatureSeleniumHelpers
   end
 
   def goal_confirmation program_name
-  	@wait.until { expect(find_el(:class, "step-card__main-heading").text).to include(program_name + ' is the way to go') }
+    @wait.until { expect(find_el(:class, "step-card__main-heading").text).to include(program_name + ' is the way to go') }
     continue
   end
 
@@ -239,14 +239,14 @@ module FeatureSeleniumHelpers
   end
 
   def apply_card
-  	sleep 1
+    sleep 1
     @wait.until { find_el(:link_text, "APPLY NOW") }.click
   end
 
   def approve_card
-  	sleep 2
-  	@d.keyboard.send_keys [:control, :f4]
-  	sleep 2
+    sleep 2
+    @d.keyboard.send_keys [:control, :f4]
+    sleep 2
     @wait.until { find_el(:css, 'label.step-card__radio-label.step-card__radio-label--credit-card-approved').displayed? }
     find_el(:css, 'label.step-card__radio-label.step-card__radio-label--credit-card-approved').click
     sleep 1
@@ -272,8 +272,8 @@ module FeatureSeleniumHelpers
   end
 
   def activate_program account_number
-  	sleep 2
-  	short_account_number = find_el(:css, "span.step-card__short-account-number") if account_number
+    sleep 2
+    short_account_number = find_el(:css, "span.step-card__short-account-number") if account_number
     @wait.until { expect(short_account_number.text).to include('12345') } if short_account_number
     @wait.until { find_el(:css, 'span.step-card__checkbox-text').displayed? }
     find_el(:css, 'span.step-card__checkbox-text').click
@@ -281,20 +281,20 @@ module FeatureSeleniumHelpers
   end
 
   def update_manualy
-  	@wait.until { find_el(:css, 'label.step-card__radio-label.step-card__radio-label--tracking-manual').displayed? }
+    @wait.until { find_el(:css, 'label.step-card__radio-label.step-card__radio-label--tracking-manual').displayed? }
     sleep 0.5
     find_el(:css, 'label.step-card__radio-label.step-card__radio-label--tracking-manual').click
     continue
   end
 
   def update_automatically
-  	sleep 2
+    sleep 2
     @wait.until { find_el(:css, 'label.step-card__radio-label.step-card__radio-label--tracking-auto') }.click
     continue
   end
 
   def get_signup_bonus
-  	@wait.until { find_el(:css, '.step-card__terms-link').displayed? }
+    @wait.until { find_el(:css, '.step-card__terms-link').displayed? }
     expect(find_el(:class, "step-card__main-heading").text).to include("To get your sign-up bonus, you need to meet the minimum spend.")
     continue
   end
@@ -312,15 +312,15 @@ module FeatureSeleniumHelpers
   end
 
   def go_to_current_goal
-  	#TODO:сделать что-то с паузой
-  	sleep 1
+    #TODO:сделать что-то с паузой
+    sleep 1
     find_el(:css, ".aside__menu-item.aside__menu-item--progress").click
   end	
 
   def set_new_goal
     @wait.until { find_el(:link_text, 'SET NEW GOAL').displayed? }
     sleep 0.5
-  	find_el(:link_text, 'SET NEW GOAL').click
+    find_el(:link_text, 'SET NEW GOAL').click
     sleep 0.5
     @wait.until { find_el(:id, 'confirmation-popup__submit').displayed? }
     sleep 0.5
@@ -353,8 +353,8 @@ module FeatureSeleniumHelpers
   end
 
   def logout
-  	sleep 1.5
-  	find_el(:css, "span.aside__panel-avatar").click
+    sleep 1.5
+    find_el(:css, "span.aside__panel-avatar").click
     @wait.until { find_el(:link_text, "Log Out").displayed? }
     find_el(:link_text, "Log Out").click
     sleep 1
@@ -413,22 +413,22 @@ module FeatureSeleniumHelpers
   ######### WALLET #################
 
   def go_to_wallet
-  	@wait.until { find_el(:css, ".aside__menu-icon.aside__menu-icon--wallet").displayed? }
-  	find_el(:css, ".aside__menu-icon.aside__menu-icon--wallet").click
+    @wait.until { find_el(:css, ".aside__menu-icon.aside__menu-icon--wallet").displayed? }
+    find_el(:css, ".aside__menu-icon.aside__menu-icon--wallet").click
   end
 
   def wallet_add_new
-  	@wait.until { find_el(:css, ".wallet__primary-btn.wallet__choice-btn").displayed? }
+    @wait.until { find_el(:css, ".wallet__primary-btn.wallet__choice-btn").displayed? }
     find_el(:css, ".wallet__primary-btn.wallet__choice-btn").click
   end
 
   def wallet_add_more
-  	@wait.until { find_el(:css, 'a.wallet__add-btn').displayed? }
+    @wait.until { find_el(:css, 'a.wallet__add-btn').displayed? }
     find_el(:css, 'a.wallet__add-btn').click
   end
 
   def add_program_from_wallet num
-  	@wait.until { find_el(:class, "accounts__block").displayed? }
+    @wait.until { find_el(:class, "accounts__block").displayed? }
     sleep 0.5
     el = find_els(:class, "accounts__block-name")[num]
     el.location_once_scrolled_into_view
@@ -472,26 +472,26 @@ module FeatureSeleniumHelpers
 
   def close_learning_popup
     sleep 1
-  	submit_button = find_els(:class, 'cards-and-programs__learning-popup-submit-button')
-  	find_el(:class, 'cards-and-programs__learning-popup-submit-button').click unless submit_button.empty?
+    submit_button = find_els(:class, 'cards-and-programs__learning-popup-submit-button')
+    find_el(:class, 'cards-and-programs__learning-popup-submit-button').click unless submit_button.empty?
   end
 
   def switch_to_manual
     sleep 1.5
     manual = find_els(:css, ".account-form__switching-link.account-form__switching-link--manual")
-  	find_el(:css, ".account-form__switching-link.account-form__switching-link--manual").click if manual.size > 0
+    find_el(:css, ".account-form__switching-link.account-form__switching-link--manual").click if manual.size > 0
   end
 
   def enter_balance balance
     @wait.until { find_el(:class, "account-form__input--account-balance").displayed? }
-  	account_balance = find_el(:class, "account-form__input--account-balance")
-  	account_balance.clear
-  	account_balance.send_keys(balance)
+    account_balance = find_el(:class, "account-form__input--account-balance")
+    account_balance.clear
+    account_balance.send_keys(balance)
     find_el(:class, "add-program__save-btn").click
   end
 
   def remove_program_from_wallet
-  	@wait.until { find_el(:class, "wallet-program__tooltip-btn").displayed? }
+    @wait.until { find_el(:class, "wallet-program__tooltip-btn").displayed? }
     sleep 1.5
     find_el(:class, "wallet-program__tooltip-btn").click
     @wait.until { find_el(:css, "a.wallet-program__tooltip-item--delete").displayed? }
@@ -508,7 +508,7 @@ module FeatureSeleniumHelpers
   end
 
   def edit_program_on_wallet
-  	@wait.until { find_el(:link_text, "EDIT") }.click
+    @wait.until { find_el(:link_text, "EDIT") }.click
     sleep 1
     find_el(:link_text, "Change settings").click
   end
@@ -553,101 +553,101 @@ module FeatureSeleniumHelpers
   end
 
   def autoupdate_program name
-  	sleep 3
-  	@wait.until { expect(find_el(:css, "h2.program-info__name").text).to include(name) }
+    sleep 3
+    @wait.until { expect(find_el(:css, "h2.program-info__name").text).to include(name) }
   end
 
   def autoupdate_credentials user
-  	# sleep 3
-  	@wait.until { find_el(:id, "account-form__login").displayed? }
-  	form_login = find_el(:id, "account-form__login")
-  	form_login.clear
-  	form_login.send_keys(user[:login])
-  	form_password = find_el(:id, "account-form__password")
-  	form_password.clear
-  	form_password.send_keys(user[:passwd])
-  	find_el(:link_text, "CHECK BALANCE").click
+    # sleep 3
+    @wait.until { find_el(:id, "account-form__login").displayed? }
+    form_login = find_el(:id, "account-form__login")
+    form_login.clear
+    form_login.send_keys(user[:login])
+    form_password = find_el(:id, "account-form__password")
+    form_password.clear
+    form_password.send_keys(user[:passwd])
+    find_el(:link_text, "CHECK BALANCE").click
   end
 
   def autoupdate_wrong_credentials user
-  	sleep 2
-  	find_el(:id, "account-form__login").send_keys('erdsasad')
-  	find_el(:id, "account-form__password").send_keys(user[:passwd])
-  	find_el(:link_text, "CHECK BALANCE").click
+    sleep 2
+    find_el(:id, "account-form__login").send_keys('erdsasad')
+    find_el(:id, "account-form__password").send_keys(user[:passwd])
+    find_el(:link_text, "CHECK BALANCE").click
   end
 
   def autoupdate_error program
-  	@long_wait.until { find_el(:class, 'flash-message__content').displayed? }
-  	if find_el(:class, 'flash-message__content').text == "Your request of balance #{program} is being processed. Please wait."
+    @long_wait.until { find_el(:class, 'flash-message__content').displayed? }
+    if find_el(:class, 'flash-message__content').text == "Your request of balance #{program} is being processed. Please wait."
       sleep 10
       @long_wait.until { find_el(:class, 'flash-message__content').displayed? }
     end
-  	expect(find_el(:class, 'flash-message__content').text).to include("We are having problems with your #{program} ID and/or auto update.")
-  	# @long_wait.until { find_el(:css, 'p.account-form__connection-error') }
+    expect(find_el(:class, 'flash-message__content').text).to include("We are having problems with your #{program} ID and/or auto update.")
+    # @long_wait.until { find_el(:css, 'p.account-form__connection-error') }
   end
 
   def close_flash_message
-  	find_el(:class, 'flash-message__close-btn').click
+    find_el(:class, 'flash-message__close-btn').click
   end
 
   def starwood_question
-  	question_text = @long_wait.until { find_el(:css, 'p.account-form__status-msg.account-form__status-msg--pre-label') }.text
-  	# p question_text
-  	case question_text
-  	when /In what city or town was your first job?/
-  		find_el(:id, "account-form__answer").send_keys('Kiev')
-  	when /What is your favorite type of food?/
-  		find_el(:id, "account-form__answer").send_keys('Pizza')
-  	when /Where did you go on your first flight?/
-  		find_el(:id, "account-form__answer").send_keys('Simferopol')
-  	when /What is your favorite vacation destination?/
-  		find_el(:id, "account-form__answer").send_keys('New York')
+    question_text = @long_wait.until { find_el(:css, 'p.account-form__status-msg.account-form__status-msg--pre-label') }.text
+    # p question_text
+    case question_text
+    when /In what city or town was your first job?/
+    	find_el(:id, "account-form__answer").send_keys('Kiev')
+    when /What is your favorite type of food?/
+    	find_el(:id, "account-form__answer").send_keys('Pizza')
+    when /Where did you go on your first flight?/
+    	find_el(:id, "account-form__answer").send_keys('Simferopol')
+    when /What is your favorite vacation destination?/
+    	find_el(:id, "account-form__answer").send_keys('New York')
     else
       puts "Error"
-  	end
+    end
     find_el(:link_text, "UPDATE BALANCE").click
   end
 
   def autoupdate_answer
-  	@long_wait.until { expect(find_el(:css, "p.account-form__success-msg").text).to include('Your balance updated successfully!') }
+    @long_wait.until { expect(find_el(:css, "p.account-form__success-msg").text).to include('Your balance updated successfully!') }
   end
 
   def wallet_save_account_btn
     @wait.until { find_el(:class, 'add-program__save-btn').displayed? }
-  	find_el(:class, 'add-program__save-btn').click
+    find_el(:class, 'add-program__save-btn').click
   end
 
   def wallet_cancel_button
-  	# @wait.until { find_el(:class, "add-program__dismiss-btn").text > 0 }
-  	find_el(:class, "add-program__dismiss-btn").click
+    # @wait.until { find_el(:class, "add-program__dismiss-btn").text > 0 }
+    find_el(:class, "add-program__dismiss-btn").click
   end
 
   def wallet_save_button
-  	# @wait.until { find_el(:class, "add-program__save-btn").text > 0 }
-  	find_el(:link_text, "SAVE").click
+    # @wait.until { find_el(:class, "add-program__save-btn").text > 0 }
+    find_el(:link_text, "SAVE").click
   end
 
   def wallet_add_new_button
-  	@wait.until { find_el(:link_text, "Add your miles and points".upcase) }
+    @wait.until { find_el(:link_text, "Add your miles and points".upcase) }
   end
 
   def autoupdate_status(status, count) 
-  	sleep 3
-  	wallet_programs = find_el(:class, "wallet__programs")
-  	programs = wallet_programs.find_elements(:class, 'wallet-program__status-edit-link')
-  	expect(programs.count).to eq(count)
-  	if programs.first.text == 'CONNECTING ...'
-  		@long_wait.until { find_el(:class, 'wallet-program__status-edit-link').text == status }
-  	end
-  	expect(programs.first.text).to include(status) if programs.first
-  	expect(programs.second.text).to include(status) if programs.second
+    sleep 3
+    wallet_programs = find_el(:class, "wallet__programs")
+    programs = wallet_programs.find_elements(:class, 'wallet-program__status-edit-link')
+    expect(programs.count).to eq(count)
+    if programs.first.text == 'CONNECTING ...'
+    	@long_wait.until { find_el(:class, 'wallet-program__status-edit-link').text == status }
+    end
+    expect(programs.first.text).to include(status) if programs.first
+    expect(programs.second.text).to include(status) if programs.second
   end
 
   ##### Wallet blocks #####
 
   def add_program_from_wallet_block num
-  	go_to_wallet
-  	wallet_add_more
+    go_to_wallet
+    wallet_add_more
     add_program_from_wallet num
     close_learning_popup
     switch_to_manual
@@ -658,13 +658,13 @@ module FeatureSeleniumHelpers
   ########## PIE ################### 
 
   def pie_have_program name
-  	@wait.until { find_el(:class, "cabinet__programs").displayed? }
-  	cabinet_programs = find_el(:class, "cabinet__programs")
-  	cabinet_programs.find_elements(:class, 'cabinet__program').each do |program|
-  		program_name = program.find_element(:css, "span.cabinet__program-name").text
-  		expect(program_name).to include(name) if program_name == name
-  		# p program_name if program_name == name
-  	end
+    @wait.until { find_el(:class, "cabinet__programs").displayed? }
+    cabinet_programs = find_el(:class, "cabinet__programs")
+    cabinet_programs.find_elements(:class, 'cabinet__program').each do |program|
+      program_name = program.find_element(:css, "span.cabinet__program-name").text
+      expect(program_name).to include(name) if program_name == name
+      # p program_name if program_name == name
+    end
     # @wait.until { expect(find_el(:css, "span.cabinet__program-name").text).to include(name) }
   end
 
@@ -684,27 +684,7 @@ module FeatureSeleniumHelpers
   end
 
   def miles_in_pie miles
-  	sleep 3
+    sleep 3
     @wait.until { expect(find_el(:css, "span.cabinet__mileage").text).to include(miles) }
-  end
-
-########## Award Wallet ################
-
-  def award_starwood_question
-  	question_text = @wait.until { find_el(:css, 'p.question') }.text
-  	p question_text
-  	case question_text
-  	when 'What is your favorite airport?'
-  		@d.execute_script("return $('input#securityAnswer').val('JFK');")
-  	when 'In what city or town was your first job?'
-  		@d.execute_script("return $('input#securityAnswer').val('Nikolaev');")
-  	when 'What is the location of your favorite family photo?'
-  		@d.execute_script("return $('input#securityAnswer').val('Odessa');")
-  	when 'What is your favorite city in the world to visit?'
-  		@d.execute_script("return $('input#securityAnswer').val('London');")
-  	end
-  	find_el(:xpath,"//label[@data-form='securityQForm']").click
-  	find_el(:id, 'checkSubmit').click
-    # find_el(:link_text, "UPDATE BALANCE").click
   end
 end
