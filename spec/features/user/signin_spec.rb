@@ -62,21 +62,22 @@ describe "User", integration: true do
     click_upcase_link "let's get started"
     monthly_spending
     choose_strategy_by_name "Mileage Plan™"
-    find_el(:link, "REGISTER WITH GOOGLE+").click
-    @wait.until { find_el(:id, 'Email').displayed? }
-    find_el(:id, "Email").send_keys('testrewardexpert@gmail.com')
-    find_el(:xpath,"//input[@value='Next']").click
-    @wait.until { find_el(:id, 'Passwd').displayed? }
-    find_el(:id, "Passwd").send_keys('testr3ward')
-    find_el(:xpath,"//input[@value='Sign in']").click
-    unless find_els(:id, 'submit_approve_access').size == 0
-      @wait.until { find_el(:id, 'submit_approve_access').displayed? }
-      find_el(:id, "submit_approve_access").click
-    end
+    find_el(:link, "#sign_in").click
+    sleep 0.5
+    @wait.until { find_el(:id, "auth__email").displayed? }
+    find_el(:id, "auth__email").send_keys('testinglogin@reward.expert')
+    #find_el(:xpath,"//input[@value='Next']").click
+    #@wait.until { find_el(:id, 'Passwd').displayed? }
+    find_el(:id, "auth__password").send_keys('testinglogin@reward.expert')
+    find_el(:class,"auth__form-submit").click
+    #unless find_els(:id, 'submit_approve_access').size == 0
+     # @wait.until { find_el(:id, 'submit_approve_access').displayed? }
+      #find_el(:id, "submit_approve_access").click
+    #end
     # @wait.until { find_el(:css, "label.step-card__radio-label.step-card__radio-label--credit-score-good").displayed? }
     # choose_credit_score 'good'
     @wait.until { find_el(:css, '.select-card__expand-link.select-card__expand-link--suggested-cards.select-card__expand-link--see-all').displayed? }
-    sleep 0.5
+    sleep 1
     expect(find_el(:css, '.aside__current-trip-region span.aside__menu-location').text).to eq 'Amsterdam'
     numbers = find_el(:class, 'select-card__balance').find_elements(:css, 'span.select-card__balance-cell')
     expect(numbers[0].text).to eq '2'
@@ -121,7 +122,7 @@ describe "User", integration: true do
     find_el(:link, "LOG IN WITH GOOGLE+").click
     unless find_els(:id, 'Email').size == 0
       @wait.until { find_el(:id, 'Email').displayed? }
-      find_el(:id, "Email").send_keys('testrewardexpert@gmail.com')
+      find_el(:id, "Email").send_keys('qa.dreamteam1@gmail.com')
       find_el(:xpath,"//input[@value='Next']").click
       @wait.until { find_el(:id, 'Passwd').displayed? }
       find_el(:id, "Passwd").send_keys('testr3ward')
@@ -149,8 +150,8 @@ describe "User", integration: true do
   it 'Log In via email Without Choosing a Strategy - USL9' do
     @wait.until { find_el(:link, "LOG IN").displayed? }
     find_el(:link, "LOG IN").click
-    find_el(:id, "auth__email").send_keys('testinglogin@reward.expert')
-    find_el(:id, "auth__password").send_keys('testinglogin@reward.expert')
+    find_el(:id, "auth__email").send_keys('testrewardexpert@gmail.com')
+    find_el(:id, "auth__password").send_keys('testr3ward')
     find_el(:xpath,"//input[@value='Log in']").click
     @wait.until { find_el(:css, '.select-card__expand-link.select-card__expand-link--suggested-cards.select-card__expand-link--see-all').displayed? }
     sleep 0.5
