@@ -134,6 +134,10 @@ module FeatureSeleniumHelpers
     find_el(:link, "LOG IN WITH #{name.upcase}").click
   end
 
+  def social_sign_up name
+    find_el(:link, "REGISTER WITH #{name.upcase}").click
+  end
+
   def go_to_profile_settings
     @wait.until { find_el(:class, "aside__panel-avatar").displayed? }
     find_el(:class, "aside__panel-avatar").click
