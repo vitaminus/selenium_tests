@@ -1,7 +1,7 @@
 require 'spec_helper'
 require "selenium-webdriver"
 
-describe "Landing American express membership rewards points", integration: true do
+describe "Landing American express membership rewards points", preprod: false do
 
   before(:all) do
     @d = driver

@@ -1,7 +1,7 @@
 require 'spec_helper'
 require "selenium-webdriver"
 
-describe "Landing Fly business class for free", integration: true do
+describe "Landing Fly business class for free", preprod: false do
 
   before(:all) do
     @d = driver

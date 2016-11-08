@@ -1,7 +1,7 @@
 require 'spec_helper'
 require "selenium-webdriver"
 
-describe "Landing Use Miles To Fly To London", integration: true do
+describe "Landing Use Miles To Fly To London", preprod: false do
 
   before(:all) do
     @d = driver
