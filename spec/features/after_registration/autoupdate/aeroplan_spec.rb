@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'selenium-webdriver'
 
-describe "Aeroplan", integration: true do
+describe "Aeroplan" do
 
   before(:all) do
   	@d = driver

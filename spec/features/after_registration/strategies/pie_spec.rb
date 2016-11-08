@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'selenium-webdriver'
 
-describe "Pie", integration: true do
+describe "Pie" do
 
   before(:all) do
     @d = driver

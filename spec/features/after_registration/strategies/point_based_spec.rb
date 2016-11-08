@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'selenium-webdriver'
 
-describe "Point based", integration: true do
+describe "Point based" do
 
   before(:all) do
     @d = driver

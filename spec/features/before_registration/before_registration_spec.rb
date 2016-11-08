@@ -1,7 +1,7 @@
 require 'spec_helper'
 require "selenium-webdriver"
 
-describe "Before registration", integration: true do
+describe "Before registration" do
 
   before(:all) do
     @d = driver

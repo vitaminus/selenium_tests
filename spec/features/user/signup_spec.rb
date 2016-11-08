@@ -2,7 +2,7 @@ require 'spec_helper'
 require "selenium-webdriver"
 # Capybara.default_driver = :selenium
 
-describe "Registration", integration: true do
+describe "Registration" do
 
   before(:all) do
     @d = driver

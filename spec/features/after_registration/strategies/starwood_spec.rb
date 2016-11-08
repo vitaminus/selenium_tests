@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'selenium-webdriver'
 
-describe "Starwood", integration: true do
+describe "Starwood" do
 
   before(:all) do
   	@d = driver

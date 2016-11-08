@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'selenium-webdriver'
 
-describe "Starwood autoupdate", integration: true do
+describe "Starwood autoupdate" do
 
   before(:all) do
   	@d = driver

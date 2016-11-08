@@ -1,7 +1,7 @@
 require 'spec_helper'
 require "selenium-webdriver"
 
-describe "Choose credit card step", integration: true do
+describe "Choose credit card step" do
 
   before(:all) do
     @d = driver

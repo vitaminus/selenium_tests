@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'selenium-webdriver'
 
-describe "Wallet", integration: true do
+describe "Wallet" do
 
   before(:all) do
     @d = driver

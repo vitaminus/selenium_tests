@@ -1,7 +1,7 @@
 require 'spec_helper'
 require "selenium-webdriver"
 
-describe "Earn miles", integration: true do
+describe "Earn miles" do
 
   before(:all) do
     @d = driver

@@ -3,7 +3,7 @@
 require 'support/feature_selenium_helpers'
 # Capybara.default_driver = :selenium
 
-describe "User", integration: true do
+describe "User" do
 
   before(:all) do
     @d = driver

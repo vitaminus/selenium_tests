@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'selenium-webdriver'
 
-describe "Co-branded", integration: true do
+describe "Co-branded" do
 
   before(:all) do
     @d = driver

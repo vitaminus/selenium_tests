@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'selenium-webdriver'
 
-describe "Lufthansa", integration: true do
+describe "Lufthansa" do
 
   before(:all) do
   	@d = driver

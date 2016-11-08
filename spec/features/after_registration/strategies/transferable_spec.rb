@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'selenium-webdriver'
 
-describe "Transferable", integration: true do
+describe "Transferable" do
 
   before(:all) do
     @d = driver

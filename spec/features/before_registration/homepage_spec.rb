@@ -1,7 +1,7 @@
 require 'spec_helper'
 require "selenium-webdriver"
 
-describe "Homepage", integration: true do
+describe "Homepage" do
 
   before(:all) do
   	@d = driver

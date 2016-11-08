@@ -1,7 +1,7 @@
 require 'spec_helper'
 require "selenium-webdriver"
 
-describe "Strategies page", integration: true do
+describe "Strategies page" do
 
   before(:all) do
     @d = driver

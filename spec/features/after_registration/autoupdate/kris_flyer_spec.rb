@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'selenium-webdriver'
 
-describe "KrisFlyer", integration: true do
+describe "KrisFlyer" do
 
   before(:all) do
   	@d = driver

@@ -2,7 +2,7 @@ require 'spec_helper'
 require "selenium-webdriver"
 # Capybara.default_driver = :selenium
 
-describe "Social network sign in", integration: true do
+describe "Social network sign in" do
 
   before(:all) do
     @d = driver
