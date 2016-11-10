@@ -62,7 +62,7 @@ describe "User" do
     click_upcase_link "let's get started"
     monthly_spending
     choose_strategy_by_name "Mileage Plan™"
-    find_el(:link, "#sign_in").click
+    find_el(:link, "Log In").click
     sleep 0.5
     @wait.until { find_el(:id, "auth__email").displayed? }
     find_el(:id, "auth__email").send_keys('testinglogin@reward.expert')
@@ -122,7 +122,7 @@ describe "User" do
     find_el(:link, "LOG IN WITH GOOGLE+").click
     unless find_els(:id, 'Email').size == 0
       @wait.until { find_el(:id, 'Email').displayed? }
-      find_el(:id, "Email").send_keys('qa.dreamteam1@gmail.com')
+      find_el(:id, "Email").send_keys('testrewardexpert@gmail.com')
       find_el(:xpath,"//input[@value='Next']").click
       @wait.until { find_el(:id, 'Passwd').displayed? }
       find_el(:id, "Passwd").send_keys('testr3ward')

@@ -249,8 +249,8 @@ module FeatureSeleniumHelpers
 
   def approve_card
     sleep 2
-    @d.keyboard.send_keys [:control, :f4]
-    sleep 2
+    close_window
+    sleep 1
     @wait.until { find_el(:css, 'label.step-card__radio-label.step-card__radio-label--credit-card-approved').displayed? }
     find_el(:css, 'label.step-card__radio-label.step-card__radio-label--credit-card-approved').click
     sleep 1
@@ -259,7 +259,7 @@ module FeatureSeleniumHelpers
 
   def pending_card
     sleep 2
-    @d.keyboard.send_keys [:control, :f4]
+    close_window
     sleep 1.5
     # @wait.until { find_el(:css, 'label.step-card__radio-label.step-card__radio-label--credit-card-pending').displayed? }
     find_el(:class, 'step-card__choice-container').find_elements(:css, 'span.step-card__radio-status').last.click
@@ -341,6 +341,13 @@ module FeatureSeleniumHelpers
         break
       end
     end
+  end
+
+  def close_window
+    all_windows = @d.window_handles
+    @d.switch_to.window(all_windows.last)
+    @d.close
+    @d.switch_to.window(all_windows.first)
   end
 
   def reset_strategy

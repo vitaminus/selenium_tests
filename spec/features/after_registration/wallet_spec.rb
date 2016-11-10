@@ -146,7 +146,7 @@ describe "Wallet" do
     logout
   end
 
-  it 'Add FF program (auto update) with correct login/password. Two steps authentication. - WL06' do
+  it 'Add FF program (auto update) with correct login/password. Two steps authentication. - WL06', broken: true do
     register
     wallet_add_new
     add_only_program 0

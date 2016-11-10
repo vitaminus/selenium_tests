@@ -44,7 +44,7 @@ describe "Strategies page" do
     find_el(:link, ('Next').upcase).click
     routes_list = find_el(:class, "routes")
     second_page_routes_count = routes_list.find_elements(:class, "route").count
-    expect(second_page_routes_count).to eq 5
+    expect(second_page_routes_count).to eq 3
     find_el(:link, ('Program').upcase).click
     @wait.until { find_el(:css, 'h3.strategy-info__title').displayed? }
     strategy_info = find_els(:css, 'h3.strategy-info__title')
@@ -53,7 +53,7 @@ describe "Strategies page" do
     find_el(:link, ('Routes').upcase).click
     routes_list = find_el(:class, "routes")
     second_page_routes_count = routes_list.find_elements(:class, "route").count
-    expect(second_page_routes_count).to eq 5
+    expect(second_page_routes_count).to eq 3
     # sleep 1
     # reset_strategy
     logout
@@ -119,7 +119,7 @@ describe "Strategies page" do
     expect_rating 'B', 10
     # expect_rating 'B', 13
     # expect_rating 'A', 14
-    expect_rating 'A', 15
+    expect_rating 'A', 19
     # expect_rating 'A', 16
     find_el(:xpath,"//a[@data-sort='rating']").click
     sleep 1
@@ -131,7 +131,7 @@ describe "Strategies page" do
     # expect_rating 'B', 9
     # expect_rating 'C', 10
     # expect_rating 'C', 13
-    expect_rating 'C', 13
+    expect_rating 'C', 19
     # sleep 1
     # reset_strategy
     logout
@@ -178,10 +178,10 @@ describe "Strategies page" do
     find_el(:xpath,"//a[@data-sort='taxes']").click
     sleep 1
     expect(@strategies_list.find_elements(:class, "strategy").first.find_element(:css, 'span.strategy__cost-value.strategy__fees').text).to eq '+ $0'
-    expect(@strategies_list.find_elements(:class, "strategy").last.find_element(:css, 'span.strategy__cost-value.strategy__fees').text).to eq '+ $710'
+    expect(@strategies_list.find_elements(:class, "strategy").last.find_element(:css, 'span.strategy__cost-value.strategy__fees').text).to eq '+ $700'
     find_el(:xpath,"//a[@data-sort='taxes']").click
     sleep 1
-    expect(@strategies_list.find_elements(:class, "strategy").first.find_element(:css, 'span.strategy__cost-value.strategy__fees').text).to eq '+ $710'
+    expect(@strategies_list.find_elements(:class, "strategy").first.find_element(:css, 'span.strategy__cost-value.strategy__fees').text).to eq '+ $700'
     expect(@strategies_list.find_elements(:class, "strategy").last.find_element(:css, 'span.strategy__cost-value.strategy__fees').text).to eq '+ $0'
     # sleep 1.5
     # reset_strategy

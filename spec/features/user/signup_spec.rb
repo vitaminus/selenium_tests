@@ -141,8 +141,8 @@ describe "Registration" do
     click_upcase_link "let's get started"
     sleep 2
     #click_upcase_link 'Register'
-    @wait.until {find_el(:class, "button button--register").displayed? }
-    find_el(:class, "button button--register").click
+    @wait.until {find_el(:css, ".button.button--register").displayed? }
+    find_el(:css, ".button.button--register").click
     @wait.until { find_el(:id, "auth__name").displayed? }
     find_el(:id, "auth__name").send_keys(@new_user)
     find_el(:id, "auth__email").send_keys(@new_user)
@@ -196,8 +196,8 @@ describe "Registration" do
     find_el(:id, "Passwd").send_keys('gmailpa$$word')
     find_el(:xpath,"//input[@value='Sign in']").click
     sleep 5
-    @wait.until { find_el(:class, "wallet__secondary-btn").displayed? }
-    go_to_current_goal
+    # @wait.until { find_el(:class, "wallet__secondary-btn").displayed? }
+    # go_to_current_goal
     choose_credit_score 'good'
     sleep 3
     @wait.until { find_el(:css, '.select-card__expand-link.select-card__expand-link--suggested-cards.select-card__expand-link--see-all').displayed? }

@@ -300,7 +300,7 @@ describe "Pie" do
     remember_to_spend
     pie_have_program "Ultimate Rewards®"
     pie_have_program "MileagePlus®"
-    expect(find_el(:class, 'cabinet__stats').find_elements(:css, 'span.cabinet__mileage').second.text).to include '120,000'
+    expect(find_el(:class, 'cabinet__stats').find_elements(:css, 'span.cabinet__mileage')[1].text).to include '120,000'
     expect(find_el(:class, 'header__info-block').find_elements(:css, 'span.header__info-data').last.text).to include '2'
     # set_new_goal
     # go_to_wallet
