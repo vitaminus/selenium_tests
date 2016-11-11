@@ -1,6 +1,3 @@
-require 'spec_helper'
-require 'selenium-webdriver'
-
 describe "Wallet" do
 
   before(:all) do
@@ -30,7 +27,6 @@ describe "Wallet" do
     @wait.until { find_el(:class, 'wallet-program__balance').displayed? }
     expect(find_el(:class, 'wallet-program__balance').text).to include '0 miles'
     expect(find_el(:class, 'wallet-program__credit-cards-msg').text).to include 'You have no credit cards'
-    # remove_program_from_wallet
     logout
   end
 

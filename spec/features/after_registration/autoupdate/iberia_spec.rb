@@ -1,6 +1,3 @@
-require 'spec_helper'
-require 'selenium-webdriver'
-
 describe "Iberia", integration: true do
 
   before(:all) do

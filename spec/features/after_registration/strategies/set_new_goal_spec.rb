@@ -1,6 +1,3 @@
-require 'spec_helper'
-require 'selenium-webdriver'
-
 describe "Set new goal" do
 
   before(:all) do

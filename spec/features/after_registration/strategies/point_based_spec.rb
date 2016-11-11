@@ -1,6 +1,3 @@
-require 'spec_helper'
-require 'selenium-webdriver'
-
 describe "Point based" do
 
   before(:all) do

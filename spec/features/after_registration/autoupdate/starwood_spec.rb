@@ -1,6 +1,3 @@
-require 'spec_helper'
-require 'selenium-webdriver'
-
 describe "Starwood autoupdate" do
 
   before(:all) do

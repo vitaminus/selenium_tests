@@ -1,6 +1,3 @@
-require 'spec_helper'
-require "selenium-webdriver"
-
 describe "Landing Use Miles and Save Big on Airline Tickets", preprod: false do
 
   before(:all) do

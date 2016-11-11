@@ -1,6 +1,3 @@
-require 'spec_helper'
-require "selenium-webdriver"
-
 describe "Choose credit card step" do
 
   before(:all) do

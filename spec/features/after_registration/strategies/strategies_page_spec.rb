@@ -1,6 +1,3 @@
-require 'spec_helper'
-require "selenium-webdriver"
-
 describe "Strategies page" do
 
   before(:all) do

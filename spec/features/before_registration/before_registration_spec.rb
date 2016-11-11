@@ -1,6 +1,3 @@
-require 'spec_helper'
-require "selenium-webdriver"
-
 describe "Before registration" do
 
   before(:all) do

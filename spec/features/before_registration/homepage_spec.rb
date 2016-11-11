@@ -1,6 +1,3 @@
-require 'spec_helper'
-require "selenium-webdriver"
-
 describe "Homepage" do
 
   before(:all) do

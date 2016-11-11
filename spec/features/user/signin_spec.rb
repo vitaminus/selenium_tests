@@ -1,8 +1,3 @@
-# require 'spec_helper'
-# require "selenium-webdriver"
-require 'support/feature_selenium_helpers'
-# Capybara.default_driver = :selenium
-
 describe "User" do
 
   before(:all) do
