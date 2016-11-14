@@ -116,8 +116,8 @@ describe "Strategies page" do
     expect_rating 'B', 10
     # expect_rating 'B', 13
     # expect_rating 'A', 14
-    expect_rating 'A', 19
-    # expect_rating 'A', 16
+    expect_rating 'A', 13 # prod
+    expect_rating 'A', 19 # preprod
     find_el(:xpath,"//a[@data-sort='rating']").click
     sleep 1
     expect_rating 'A', 0
@@ -127,8 +127,8 @@ describe "Strategies page" do
     expect_rating 'B', 6
     # expect_rating 'B', 9
     # expect_rating 'C', 10
-    # expect_rating 'C', 13
-    expect_rating 'C', 19
+    # expect_rating 'C', 13 # prod
+    expect_rating 'C', 19 # preprod
     # sleep 1
     # reset_strategy
     logout
