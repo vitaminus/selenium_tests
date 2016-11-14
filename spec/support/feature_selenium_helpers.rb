@@ -29,6 +29,17 @@ module FeatureSeleniumHelpers
     @d.navigate.to (url)
   end
 
+  def url
+    case ENV["URL"]
+    when 'stage'
+      "https://stage.rewardexpert.com"
+    when 'preprod'
+      "https://preprod.rewardexpert.com"
+    when 'prod'
+      "https://www.rewardexpert.com"
+    end
+  end
+
   def quit
     @d.quit
   end

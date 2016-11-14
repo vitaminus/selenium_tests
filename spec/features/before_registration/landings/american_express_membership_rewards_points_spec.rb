@@ -8,7 +8,7 @@ describe "Landing American express membership rewards points", preprod: false do
   end
 
   before(:each) do
-    @d.navigate.to("#{ENV["URL"]}/american-express-membership-rewards-points/")
+    @d.navigate.to("#{url}/american-express-membership-rewards-points/")
     # code_word
   end
 
@@ -21,7 +21,7 @@ describe "Landing American express membership rewards points", preprod: false do
     expect(@d.find_element(:css, "h1.intro-section__heading").text).to include("Fly For Free with Amex Points")
     advises = @d.find_element(:class, 'intro-section__advices').find_elements(:class, 'intro-section__advice')
     expect(advises.first.find_element(:css, "h2.intro-section__advice-title").text).to include("TRANSFER TO 16 AIRLINES")
-    expect(advises.second.find_element(:css, "h2.intro-section__advice-title").text).to include("FREE ECONOMY OR BUSINESS CLASS")
+    expect(advises[1].find_element(:css, "h2.intro-section__advice-title").text).to include("FREE ECONOMY OR BUSINESS CLASS")
     expect(@d.find_element(:css, "h2.landing-section__heading").text).to include("Maximize your Membership Rewards")
   end
 
