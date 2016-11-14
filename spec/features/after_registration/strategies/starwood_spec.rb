@@ -16,7 +16,7 @@ describe "Starwood" do
   	quit
   end
 
-  it "good credit score apply card add starwood from wallet - Executive Club", :broken do
+  it "good credit score apply card add starwood from wallet - Executive Club" do
   	register
     go_to_current_goal
     fill_in_waypoint('JFK', 'LHR')
@@ -41,7 +41,7 @@ describe "Starwood" do
     logout
   end
 
-  it "empty wallet - good credit score - EW1", :broken do
+  it "empty wallet - good credit score - EW1" do
     register
     go_to_current_goal
     fill_in_waypoint('JFK', 'LHR')
@@ -67,7 +67,7 @@ describe "Starwood" do
     logout
   end
 
-  it 'use own card/program - good credit score - UO1', :broken do
+  it 'use own card/program - good credit score - UO1' do
     register
     wallet_add_new
     add_program_from_wallet 24
@@ -102,7 +102,7 @@ describe "Starwood" do
     logout
   end
 
-  it "empty wallet - good credit score - skip card - SC2", :broken do
+  it "empty wallet - good credit score - skip card - SC2" do
     register
     go_to_current_goal
     fill_in_waypoint('JFK', 'LHR')
