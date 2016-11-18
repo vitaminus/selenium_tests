@@ -124,7 +124,6 @@ describe "Registration" do
     find_el(:id, "auth__email").send_keys(@new_user)
     find_el(:id, "auth__password").send_keys(@new_user)
     find_el(:id, "auth__password_confirmation").send_keys(@new_user)
-    # find_el(:class, "auth__form-checkbox-label").click
     find_el(:xpath,"//input[@value='Register now']").click
     @wait.until { find_el(:css, "p.auth__tooltip-message").displayed? }
     expect(find_el(:css, "p.auth__tooltip-message").text).to include "Terms of service must be accepted"
@@ -136,7 +135,6 @@ describe "Registration" do
     fill_in_waypoint_homepage 'JFK', 'LHR'
     click_upcase_link "let's get started"
     sleep 2
-    #click_upcase_link 'Register'
     @wait.until {find_el(:css, ".button.button--register").displayed? }
     find_el(:css, ".button.button--register").click
     @wait.until { find_el(:id, "auth__name").displayed? }

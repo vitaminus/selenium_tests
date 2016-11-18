@@ -52,9 +52,6 @@ describe "Pie" do
     expect(find_el(:css, 'span.cabinet__mileage').text).to eq '60,000'
     expect(find_el(:css, 'span.cabinet__program-mileage-count').text).to eq '60,000'
     expect(find_el(:css, 'h2.ready-step-notification__heading').text).to include 'Congratulations'
-    # set_new_goal
-    # go_to_wallet
-    # remove_program_from_wallet
     logout
   end
 
@@ -162,10 +159,6 @@ describe "Pie" do
     expect(find_el(:css, 'span.cabinet__other-program-name').text).to eq 'Other bonuses'
     expect(find_el(:css, 'span.cabinet__program-mileage-count.cabinet__program-mileage-count--other-bonuses').text).to eq '5,000'
     expect(find_el(:css, 'h2.ready-step-notification__heading').text).to include 'Congratulations'
-    # set_new_goal
-    # go_to_wallet
-    # remove_program_from_wallet
-    # remove_program_from_wallet
     logout
   end
 
@@ -197,9 +190,6 @@ describe "Pie" do
     expect(find_el(:css, 'span.cabinet__mileage').text).to eq '0'
     expect(find_el(:css, 'span.cabinet__program-mileage-count').text).to eq '0'
     expect(find_el(:css, 'span.ready-steps__note').text).to include '$2,500'
-    # set_new_goal
-    # go_to_wallet
-    # remove_program_from_wallet
     logout
   end
 
@@ -229,9 +219,6 @@ describe "Pie" do
     expect(find_el(:css, 'span.cabinet__mileage').text).to eq '0'
     expect(find_el(:css, 'span.cabinet__program-mileage-count').text).to eq '0'
     expect(find_el(:css, 'span.ready-steps__note').text).to include '$2,500'
-    # set_new_goal
-    # go_to_wallet
-    # remove_program_from_wallet
     logout
   end
 
@@ -267,10 +254,6 @@ describe "Pie" do
     expect(programs.first.text).to eq '0 Starpoints®'
     expect(programs.second.text).to eq '0 miles'
     expect(find_el(:css, 'span.ready-steps__note').text).to include '$2,500'
-    # set_new_goal
-    # go_to_wallet
-    # remove_program_from_wallet
-    # remove_program_from_wallet
     logout
   end
 
@@ -299,10 +282,6 @@ describe "Pie" do
     pie_have_program "MileagePlus®"
     expect(find_el(:class, 'cabinet__stats').find_elements(:css, 'span.cabinet__mileage')[1].text).to include '120,000'
     expect(find_el(:class, 'header__info-block').find_elements(:css, 'span.header__info-data').last.text).to include '2'
-    # set_new_goal
-    # go_to_wallet
-    # remove_program_from_wallet
-    # remove_program_from_wallet
     logout
   end
 

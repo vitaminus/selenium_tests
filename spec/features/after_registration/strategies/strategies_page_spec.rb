@@ -25,8 +25,6 @@ describe "Strategies page" do
     @strategies_list = find_el(:class, "strategies__list")
     strategies_count = @strategies_list.find_elements(:class, "strategy").count
     expect(find_el(:css, "h2.strategies__heading.strategies__heading--active").text).to include("#{strategies_count} Ways to Get There")
-    # sleep 1
-    # reset_strategy
     logout
   end
 
@@ -51,8 +49,6 @@ describe "Strategies page" do
     routes_list = find_el(:class, "routes")
     second_page_routes_count = routes_list.find_elements(:class, "route").count
     expect(second_page_routes_count).to eq 3
-    # sleep 1
-    # reset_strategy
     logout
   end
 
@@ -66,8 +62,6 @@ describe "Strategies page" do
     sleep 1
     show_routes = find_el(:class, "routes").displayed?
     expect(show_routes).to be_falsey
-    # sleep 1
-    # reset_strategy
     logout
   end
 
@@ -80,8 +74,6 @@ describe "Strategies page" do
     sleep 1
     show_routes = find_el(:class, "routes").displayed?
     expect(show_routes).to be_falsey
-    # sleep 1
-    # reset_strategy
     logout
   end
 
@@ -90,16 +82,8 @@ describe "Strategies page" do
     sleep 0.5
     @strategies_list = find_el(:class, "strategies__list")
     expect_rating 'A', 0
-    # expect_rating 'A', 1
-    # expect_rating 'A', 2
-    # expect_rating 'B', 4
     expect_rating 'B', 6
-    # expect_rating 'B', 8
-    # expect_rating 'C', 9
     expect_rating 'C', 13
-    # expect_rating 'C', 16
-    # sleep 1
-    # reset_strategy
     logout
   end
 
@@ -110,27 +94,16 @@ describe "Strategies page" do
     find_el(:xpath,"//a[@data-sort='rating']").click
     sleep 1
     expect_rating 'C', 0
-    # expect_rating 'C', 3
-    # expect_rating 'C', 6
-    # expect_rating 'B', 7
     expect_rating 'B', 10
-    # expect_rating 'B', 13
-    # expect_rating 'A', 14
     # expect_rating 'A', 13 # prod
     expect_rating 'A', 19 # preprod
     find_el(:xpath,"//a[@data-sort='rating']").click
     sleep 1
     expect_rating 'A', 0
-    # expect_rating 'A', 1
-    # expect_rating 'A', 2
-    # expect_rating 'B', 3
+
     expect_rating 'B', 6
-    # expect_rating 'B', 9
-    # expect_rating 'C', 10
     # expect_rating 'C', 13 # prod
     expect_rating 'C', 19 # preprod
-    # sleep 1
-    # reset_strategy
     logout
   end
 
@@ -146,8 +119,6 @@ describe "Strategies page" do
     sleep 1
     expect(@strategies_list.find_elements(:class, "strategy").first.find_element(:css, 'img.strategy__program-logo')[:alt]).to eq 'Venture® Rewards'
     expect(@strategies_list.find_elements(:class, "strategy").last.find_element(:css, 'img.strategy__program-logo')[:alt]).to eq 'AAdvantage®'
-    # sleep 1.5
-    # reset_strategy
     logout
   end
 
@@ -163,8 +134,6 @@ describe "Strategies page" do
     sleep 1
     expect(@strategies_list.find_elements(:class, "strategy").first.find_element(:css, 'span.strategy__cost-value.strategy__miles').text).to eq '95,000'
     expect(@strategies_list.find_elements(:class, "strategy").last.find_element(:css, 'span.strategy__cost-value.strategy__miles').text).to eq '26,000'
-    # sleep 1.5
-    # reset_strategy
     logout
   end
 
@@ -180,8 +149,6 @@ describe "Strategies page" do
     sleep 1
     expect(@strategies_list.find_elements(:class, "strategy").first.find_element(:css, 'span.strategy__cost-value.strategy__fees').text).to eq '+ $700'
     expect(@strategies_list.find_elements(:class, "strategy").last.find_element(:css, 'span.strategy__cost-value.strategy__fees').text).to eq '+ $0'
-    # sleep 1.5
-    # reset_strategy
     logout
   end
 
@@ -197,8 +164,6 @@ describe "Strategies page" do
     sleep 1
     expect(@strategies_list.find_elements(:class, "strategy").first.find_element(:css, '.strategy__earn-time-duration').text).to eq '3+ years'
     expect(@strategies_list.find_elements(:class, "strategy").last.find_element(:css, '.strategy__earn-time-duration').text).to eq '3 months'
-    # sleep 1.5
-    # reset_strategy
     logout
   end
 
@@ -212,10 +177,6 @@ describe "Strategies page" do
     go_to_current_goal
     @long_wait.until { find_el(:class, "strategies__list").displayed? }
     find_el(:xpath,"//a[@data-sort='taxes']").click
-    # sleep 1.5
-    # reset_strategy
-    # go_to_wallet
-    # remove_program_from_wallet
     logout
   end
 
@@ -229,10 +190,6 @@ describe "Strategies page" do
     go_to_current_goal
     @long_wait.until { find_el(:class, "strategies__list").displayed? }
     find_el(:xpath,"//a[@data-sort='miles']").click
-    # sleep 1
-    # reset_strategy
-    # go_to_wallet
-    # remove_program_from_wallet
     logout
   end
 
@@ -257,10 +214,6 @@ describe "Strategies page" do
         break
       end
     end
-    # sleep 1
-    # reset_strategy
-    # go_to_wallet
-    # remove_program_from_wallet
     logout
   end
 
@@ -293,8 +246,6 @@ describe "Strategies page" do
         break
       end
     end
-    # sleep 1.5
-    # reset_strategy
     logout
   end
 

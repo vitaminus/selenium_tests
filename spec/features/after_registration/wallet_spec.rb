@@ -46,7 +46,6 @@ describe "Wallet" do
     @wait.until { find_el(:class, 'wallet-program__balance').displayed? }
     expect(find_el(:class, 'wallet-program__balance').text).to include '0 points'
     expect(find_el(:class, 'wallet-program__credit-card-img')['alt']).to include 'Chase Sapphire Preferred® Card'
-    # remove_program_from_wallet
     logout
   end
 
@@ -72,7 +71,6 @@ describe "Wallet" do
     @wait.until { find_el(:class, 'wallet-program__balance').displayed? }
     expect(find_el(:class, 'wallet-program__balance').text).to include '2,500 points'
     expect(find_el(:class, 'wallet-program__credit-card-img')['alt']).to include 'Chase Sapphire Preferred® Card'
-    # remove_program_from_wallet
     logout
   end
 
@@ -123,7 +121,6 @@ describe "Wallet" do
     @wait.until { find_el(:class, 'wallet-program__balance').displayed? }
     expect(find_el(:class, 'wallet-program__balance').text).to include '0 miles'
     expect(find_el(:class, 'wallet-program__credit-cards-msg').text).to include 'You have no credit cards'
-    # remove_program_from_wallet
     logout
   end
 
@@ -137,8 +134,6 @@ describe "Wallet" do
     close_flash_message
     sleep 2
     wallet_cancel_button
-    # sleep 2
-    # remove_program_from_wallet
     logout
   end
 
@@ -150,15 +145,8 @@ describe "Wallet" do
     autoupdate_credentials starwood_user
     starwood_question
     autoupdate_answer
-    # autoupdate_error 'Iberia Plus'
-    # close_flash_message
-    # autoupdate_credentials iberia_user
-    # autoupdate_answer
-    # close_flash_message
     sleep 1
     wallet_save_account_btn
-    # sleep 2
-    # remove_program_from_wallet
     logout
   end
 

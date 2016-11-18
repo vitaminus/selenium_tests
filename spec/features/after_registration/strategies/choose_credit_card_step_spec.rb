@@ -31,7 +31,6 @@ describe "Choose credit card step" do
     find_el(:css, '.header__wizard-link.header__wizard-link--program').click
     @long_wait.until { find_el(:class, "strategies__list").displayed? }
     find_el(:class, "strategies__list")
-    # reset_strategy
     logout
   end
 
@@ -61,7 +60,6 @@ describe "Choose credit card step" do
     @d.navigate.back
     @long_wait.until { find_el(:class, "strategies__list").displayed? }
     find_el(:class, "strategies__list")
-    # reset_strategy
     logout
   end
 
@@ -80,7 +78,6 @@ describe "Choose credit card step" do
     expect(numbers[2].text).to eq '0'
     expect(numbers[3].text).to eq '0'
     expect(numbers[4].text).to eq '0'
-    # reset_strategy
     logout
   end
 
@@ -98,7 +95,6 @@ describe "Choose credit card step" do
     el = find_els(:class, "accounts__block-name")[18]
     el.location_once_scrolled_into_view
     el.click
-    # switch_to_manual
     sleep 1
     find_el(:class, 'cards-and-programs__save-btn').click
     enter_balance 3000
@@ -128,11 +124,6 @@ describe "Choose credit card step" do
     rows = find_el(:class, 'balance-details-tooltip__body').find_elements(:class, 'balance-details-tooltip__row')
     expect(rows.first.find_element(:css, '.balance-details-tooltip__column.balance-details-tooltip__column--value').text).to eq '3,000'
     expect(rows.last.find_element(:css, 'span.balance-details-tooltip__aux-value').text).to eq '+2,777'
-    # reset_strategy
-    # go_to_wallet
-    # remove_program_from_wallet
-    # sleep 1
-    # remove_program_from_wallet
     logout
   end
 
@@ -159,7 +150,6 @@ describe "Choose credit card step" do
     find_el(:css, 'a.credit-card__action-link').click
     @wait.until { find_el(:css, 'h2.wallet__sub-heading').displayed? }
     expect(find_el(:css, 'h2.wallet__sub-heading').text).to eq 'We\'ll show you the best way to use them.'
-    # reset_strategy
     logout
   end
 
@@ -177,7 +167,6 @@ describe "Choose credit card step" do
     el = find_els(:class, "accounts__block-name")[18]
     el.location_once_scrolled_into_view
     el.click
-    # switch_to_manual
     sleep 1
     find_el(:class, 'cards-and-programs__save-btn').click
     enter_balance 3000
@@ -198,12 +187,6 @@ describe "Choose credit card step" do
     cards_from_wallet.first.find_element(:css, '.credit-card__apply-action.credit-card__btn.credit-card__btn--blue').click
     @wait.until { find_el(:css, 'h1.step-card__main-heading').displayed? }
     expect(find_el(:css, 'h1.step-card__main-heading').text).to eq 'Reach your goal with this travel rewards card.'
-    # sleep 0.5
-    # reset_strategy
-    # go_to_wallet
-    # remove_program_from_wallet
-    # sleep 1
-    # remove_program_from_wallet
     logout
   end
 
@@ -226,8 +209,6 @@ describe "Choose credit card step" do
     cards_with_bonus.first.find_element(:css, '.credit-card__skip-action.credit-card__btn.credit-card__btn--green').click
     @wait.until { find_el(:css, 'span.cabinet__program-label').displayed? }
     expect(find_el(:css, 'span.cabinet__program-label').text).to eq 'REMINDER: SIGN UP TO REWARD PROGRAM'
-    # sleep 0.5
-    # reset_strategy
     logout
   end
 
@@ -274,12 +255,6 @@ describe "Choose credit card step" do
     expect(find_el(:css, 'span.cabinet__other-program-name').text).to eq 'Other programs'
     expect(find_el(:css, 'span.cabinet__program-mileage-count.cabinet__program-mileage-count--other-programs').text).to eq '2,777'
     expect(find_el(:css, 'span.ready-step-notification__text').text).to include 'Chase Sapphire Preferred® Card is still available'
-    # sleep 0.5
-    # reset_strategy
-    # go_to_wallet
-    # remove_program_from_wallet
-    # sleep 1.5
-    # remove_program_from_wallet
     logout
   end
 
@@ -309,7 +284,6 @@ describe "Choose credit card step" do
     @wait.until { find_el(:css, 'h2.step-card__body-heading').displayed? }
     expect(find_el(:css, 'h2.step-card__body-heading').text).to eq 'My Citi® / AAdvantage® Platinum Select® MasterCard® application was:'
     sleep 0.5
-    # reset_strategy
     logout
   end
 
@@ -327,7 +301,6 @@ describe "Choose credit card step" do
     el = find_els(:class, "accounts__block-name")[18]
     el.location_once_scrolled_into_view
     el.click
-    # switch_to_manual
     sleep 1
     find_el(:class, 'cards-and-programs__save-btn').click
     enter_balance 3000
@@ -355,12 +328,6 @@ describe "Choose credit card step" do
     close_window
     @wait.until { find_el(:css, 'h2.step-card__body-heading').displayed? }
     expect(find_el(:css, 'h2.step-card__body-heading').text).to eq 'My Chase Sapphire Preferred® Card application was:'
-    # sleep 1
-    # reset_strategy
-    # go_to_wallet
-    # remove_program_from_wallet
-    # sleep 2.5
-    # remove_program_from_wallet
     logout
   end
 
@@ -388,8 +355,6 @@ describe "Choose credit card step" do
     expect(find_el(:css, '.credit-card__overview-title--points_transfer').text).to eq 'POINTS TRANSFER'
     expect(find_el(:css, '.credit-card__terms-link').text).to eq 'See Terms and Conditions'
     expect(find_el(:css, 'span.credit-card__score-info').text).to include('Recommended credit score')
-    # sleep 0.5
-    # reset_strategy
     logout
   end
 
@@ -433,12 +398,6 @@ describe "Choose credit card step" do
     expect(find_el(:css, '.credit-card__overview-title--points_transfer').text).to eq 'POINTS TRANSFER'
     expect(find_el(:css, '.credit-card__terms-link').text).to eq 'See Terms and Conditions'
     expect(find_el(:css, 'span.credit-card__score-info').text).to include('Recommended credit score')
-    # sleep 0.5
-    # reset_strategy
-    # go_to_wallet
-    # remove_program_from_wallet
-    # sleep 1
-    # remove_program_from_wallet
     logout
   end
 
@@ -456,7 +415,6 @@ describe "Choose credit card step" do
     el = find_els(:class, "accounts__block-name")[18]
     el.location_once_scrolled_into_view
     el.click
-    # switch_to_manual
     sleep 1
     find_el(:class, 'cards-and-programs__save-btn').click
     enter_balance 3000
@@ -485,12 +443,6 @@ describe "Choose credit card step" do
     expect(numbers[5].text).to eq '3'
     expect(find_els(:class, 'select-card__header-data-value').first.text).to eq '120,000'
     expect(find_els(:class, 'select-card__header-data-value').last.text).to eq '5,777'
-    # sleep 0.5
-    # reset_strategy
-    # go_to_wallet
-    # remove_program_from_wallet
-    # sleep 1
-    # remove_program_from_wallet
     logout
   end
 

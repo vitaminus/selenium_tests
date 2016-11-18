@@ -31,9 +31,6 @@ describe "Co-branded" do
     get_signup_bonus
     remember_to_spend
     pie_have_program "AAdvantage®"
-    # set_new_goal
-    # go_to_wallet
-    # remove_program_from_wallet
     logout
   end
 
@@ -63,10 +60,6 @@ describe "Co-branded" do
     sleep 1
     go_to_wallet
     check_other_program 'Ultimate Rewards®'
-    # reset_strategy
-    # go_to_wallet
-    # remove_program_from_wallet
-    # remove_program_from_wallet
     logout
   end
 
@@ -91,9 +84,6 @@ describe "Co-branded" do
     @wait.until { find_el(:class, 'wallet-program__img').displayed? }
     expect(find_el(:class, 'wallet-program__img')['alt']).to include 'AAdvantage®'
     expect(find_el(:class, 'wallet-program__credit-cards-msg').text).to include 'You have no credit cards'
-    # reset_strategy
-    # go_to_wallet
-    # remove_program_from_wallet
     logout
   end
 

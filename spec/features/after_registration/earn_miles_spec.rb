@@ -49,16 +49,12 @@ describe "Earn miles" do
     pie_have_program "AAdvantage®"
     go_to_earn_miles
     promos_for 'aadvantage'
-    # reset_strategy
-    # go_to_wallet
-    # remove_program_from_wallet
     logout
   end
 
   it 'users save promos - EM3' do
     register
     go_to_current_goal
-    # @wait.until { find_el(:class, 'step-form__heading').displayed? }
     go_to_earn_miles
     all_promos
     find_el(:css, '.earn-miles__nav-button.earn-miles__nav-button--favorite-deals').click

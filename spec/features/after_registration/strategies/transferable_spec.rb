@@ -33,10 +33,6 @@ describe "Transferable" do
     pie_have_program "Membership Rewards®"
     pie_have_program "Executive Club"
     miles_in_pie "0"
-    # set_new_goal
-    # go_to_wallet
-    # remove_program_from_wallet
-    # remove_program_from_wallet
     logout
   end
 
@@ -66,11 +62,6 @@ describe "Transferable" do
     sleep 0.5
     go_to_wallet
     check_other_program 'Starwood Preferred Guest®'
-    # reset_strategy
-    # go_to_wallet
-    # remove_program_from_wallet
-    # remove_program_from_wallet
-    # remove_program_from_wallet
     logout
   end
 

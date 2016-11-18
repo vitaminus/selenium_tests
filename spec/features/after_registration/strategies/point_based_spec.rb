@@ -30,9 +30,6 @@ describe "Point based" do
     sleep 0.5
     remember_to_spend
     pie_have_program "Ultimate Rewards®"
-    # set_new_goal
-    # go_to_wallet
-    # remove_program_from_wallet
     logout
   end
 
@@ -52,7 +49,6 @@ describe "Point based" do
     go_to_wallet
     @wait.until { find_el(:css, 'h2.wallet__sub-heading').displayed? }
     expect(find_el(:css, 'h2.wallet__sub-heading').text).to include "We'll show you the best way to use them."
-    # reset_strategy
     logout
   end
 

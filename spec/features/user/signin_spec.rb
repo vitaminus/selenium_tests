@@ -61,16 +61,8 @@ describe "User" do
     sleep 0.5
     @wait.until { find_el(:id, "auth__email").displayed? }
     find_el(:id, "auth__email").send_keys('testinglogin@reward.expert')
-    #find_el(:xpath,"//input[@value='Next']").click
-    #@wait.until { find_el(:id, 'Passwd').displayed? }
     find_el(:id, "auth__password").send_keys('testinglogin@reward.expert')
     find_el(:class,"auth__form-submit").click
-    #unless find_els(:id, 'submit_approve_access').size == 0
-     # @wait.until { find_el(:id, 'submit_approve_access').displayed? }
-      #find_el(:id, "submit_approve_access").click
-    #end
-    # @wait.until { find_el(:css, "label.step-card__radio-label.step-card__radio-label--credit-score-good").displayed? }
-    # choose_credit_score 'good'
     @wait.until { find_el(:css, '.select-card__expand-link.select-card__expand-link--suggested-cards.select-card__expand-link--see-all').displayed? }
     sleep 1
     expect(find_el(:css, '.aside__current-trip-region span.aside__menu-location').text).to eq 'Amsterdam'

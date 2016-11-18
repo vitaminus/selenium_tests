@@ -9,7 +9,7 @@ describe "Landing American express membership rewards points", preprod: false do
 
   before(:each) do
     @d.navigate.to("#{url}/american-express-membership-rewards-points/")
-    # code_word
+    code_word unless url == 'preprod'
   end
 
   after(:all) do

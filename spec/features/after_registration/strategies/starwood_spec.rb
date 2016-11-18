@@ -34,10 +34,6 @@ describe "Starwood" do
     add_program_from_wallet_block 2
     miles_in_pie "150"
     pie_have_other_program
-    # set_new_goal
-    # go_to_wallet
-    # remove_program_from_wallet
-    # remove_program_from_wallet
     logout
   end
 
@@ -60,10 +56,6 @@ describe "Starwood" do
     pie_have_program "AAdvantage®"
     pie_have_program "Starwood Preferred Guest®"
     miles_in_pie "0"
-    # set_new_goal
-    # go_to_wallet
-    # remove_program_from_wallet
-    # remove_program_from_wallet
     logout
   end
 
@@ -94,11 +86,6 @@ describe "Starwood" do
     pie_have_program "Executive Club"
     go_to_wallet
     check_other_program 'Ultimate Rewards®'
-    # reset_strategy
-    # go_to_wallet
-    # remove_program_from_wallet
-    # remove_program_from_wallet
-    # remove_program_from_wallet
     logout
   end
 
@@ -124,9 +111,6 @@ describe "Starwood" do
     expect(find_el(:class, 'wallet-program__img')['alt']).to include 'AAdvantage®'
     expect(find_el(:class, 'wallet-program__credit-cards-msg').text).to include 'You have no credit cards'
     expect(find_el(:class, 'wallet__programs').find_elements(:class, 'wallet-program').count).to eq 1
-    # reset_strategy
-    # go_to_wallet
-    # remove_program_from_wallet
     logout
   end
 

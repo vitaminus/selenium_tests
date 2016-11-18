@@ -9,7 +9,7 @@ describe "Landing Fly business class for free", preprod: false do
 
   before(:each) do
     @d.navigate.to("#{url}/fly-business-class-for-free/")
-    # code_word
+    code_word unless url == 'preprod'
   end
 
   after(:all) do
