@@ -35,7 +35,6 @@ describe "Set new goal" do
     find_el(:id, 'confirmation-popup__cancel').click
     sleep 0.5
     pie_have_reminder "AAdvantage®"
-    # reset_strategy
     logout
   end
 

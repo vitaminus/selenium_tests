@@ -9,7 +9,7 @@ describe "Landing Use Miles and Save Big on Airline Tickets", preprod: false do
 
   before(:each) do
     @d.navigate.to("#{url}/use-miles-and-save-on-airline-tickets/")
-    # code_word
+    code_word unless url == 'preprod'
   end
 
   after(:all) do
