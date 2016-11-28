@@ -60,7 +60,19 @@ describe "Homepage" do
     expect(find_el(:css, "h1.terms-card__main-heading").text).to include('Sitemap')
   end
 
-  #TODO Add Press page
+it 'press page' do
+  find_el(:link, 'Press').click
+  all_windows = @d.window_handles
+  @d.switch_to.window(all_windows.last)
+  wait.until { find_el(:css, 'a.press-panel__info-link').displayed? }
+  expect(find_el(:css, 'a.press-panel__info-link').text).to include('kaja@rewardexpert.com')
+  titles = find_els(:class, 'press-panel__title')
+  expect(titles[0].text).to eq 'Media'
+  expect(titles[1].text).to eq 'Press Releases'
+  expect(titles[2].text).to eq 'In The News'
+  links = find_els(:class, 'press-panel__info-link')
+  expect(links.size).to be >= 18
+end
 
   it 'interactive map' do
     all_map_cities = find_el(:class, 'home__map-container')
