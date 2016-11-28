@@ -32,6 +32,10 @@ describe "Registration" do
     find_el(:xpath,"//input[@value='Register now']").click
     @wait.until { find_el(:css, "p.auth__tooltip-message").displayed? }
     expect(find_el(:css, "p.auth__tooltip-message").text).to include "Please enter your name"
+    find_el(:id, "auth__name").send_keys('12345678901234567890123456789012345678901')
+    find_el(:xpath,"//input[@value='Register now']").click
+    @wait.until { find_el(:css, "p.auth__tooltip-message").displayed? }
+    expect(find_el(:css, "p.auth__tooltip-message").text).to include "Username should be 40 chars maximum"
   end
 
   it "with empty email - UR3" do
