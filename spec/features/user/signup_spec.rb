@@ -23,7 +23,7 @@ describe "Registration" do
   end
 
   it "with empty name - UR2" do
-    click_upcase_link 'Register'
+    find_el(:css, '.rewardexpert__mobile-invisible a.button--register').click
     find_el(:id, "auth__name").send_keys('')
     find_el(:id, "auth__email").send_keys(@new_user)
     find_el(:id, "auth__password").send_keys(@new_user)
@@ -39,7 +39,7 @@ describe "Registration" do
   end
 
   it "with empty email - UR3" do
-    click_upcase_link 'Register'
+    find_el(:css, '.rewardexpert__mobile-invisible a.button--register').click
     find_el(:id, "auth__name").send_keys(@new_user)
     find_el(:id, "auth__email").send_keys('')
     find_el(:id, "auth__password").send_keys(@new_user)
@@ -51,7 +51,7 @@ describe "Registration" do
   end
 
   it "with invalid email - UR4" do
-    click_upcase_link 'Register'
+    find_el(:css, '.rewardexpert__mobile-invisible a.button--register').click
     find_el(:id, "auth__name").send_keys(@new_user)
     find_el(:id, "auth__email").send_keys('asd@asdsad')
     find_el(:id, "auth__password").send_keys(@new_user)
@@ -63,7 +63,7 @@ describe "Registration" do
   end
 
   it "with taken email - UR5" do
-    click_upcase_link 'Register'
+    find_el(:css, '.rewardexpert__mobile-invisible a.button--register').click
     find_el(:id, "auth__name").send_keys(@new_user)
     find_el(:id, "auth__email").send_keys('vitamin@vitamin.com')
     find_el(:id, "auth__password").send_keys(@new_user)
@@ -75,7 +75,7 @@ describe "Registration" do
   end
 
   it "with empty password - UR6" do
-    click_upcase_link 'Register'
+    find_el(:css, '.rewardexpert__mobile-invisible a.button--register').click
     find_el(:id, "auth__name").send_keys(@new_user)
     find_el(:id, "auth__email").send_keys(@new_user)
     find_el(:id, "auth__password").send_keys('')
@@ -87,7 +87,7 @@ describe "Registration" do
   end
 
   it "with too short password - UR7" do
-    click_upcase_link 'Register'
+    find_el(:css, '.rewardexpert__mobile-invisible a.button--register').click
     find_el(:id, "auth__name").send_keys(@new_user)
     find_el(:id, "auth__email").send_keys(@new_user)
     find_el(:id, "auth__password").send_keys('passwor')
@@ -99,7 +99,7 @@ describe "Registration" do
   end
 
   it "with empty password confirmation - UR8" do
-    click_upcase_link 'Register'
+    find_el(:css, '.rewardexpert__mobile-invisible a.button--register').click
     find_el(:id, "auth__name").send_keys(@new_user)
     find_el(:id, "auth__email").send_keys(@new_user)
     find_el(:id, "auth__password").send_keys(@new_user)
@@ -111,7 +111,7 @@ describe "Registration" do
   end
 
   it "with wrong confirmation - UR9" do
-    click_upcase_link 'Register'
+    find_el(:css, '.rewardexpert__mobile-invisible a.button--register').click
     find_el(:id, "auth__name").send_keys(@new_user)
     find_el(:id, "auth__email").send_keys(@new_user)
     find_el(:id, "auth__password").send_keys(@new_user)
@@ -123,7 +123,7 @@ describe "Registration" do
   end
 
   it "with unchecked terms and conditions - UR10" do
-    click_upcase_link 'Register'
+    find_el(:css, '.rewardexpert__mobile-invisible a.button--register').click
     find_el(:id, "auth__name").send_keys(@new_user)
     find_el(:id, "auth__email").send_keys(@new_user)
     find_el(:id, "auth__password").send_keys(@new_user)
