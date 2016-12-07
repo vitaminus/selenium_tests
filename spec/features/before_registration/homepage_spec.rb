@@ -30,12 +30,25 @@ describe "Homepage" do
   end
 
   it 'link About Us' do
-    click_upcase_link 'About Us'
+    find_el(:class, "re-header__menu-item--company").click
+    all_links = find_els(:css, "li.re-header__menu-item--company a.re-header__dropdown-block")
+    # puts all_links.size
+    # puts all_links[0].text
+    all_links[0].click
     expect(find_el(:css, "h1.about__content-heading").text).to include('About Our Company')
   end
 
+  it 'link Careers' do
+    find_el(:class, "re-header__menu-item--company").click
+    all_links = find_els(:css, "li.re-header__menu-item--company a.re-header__dropdown-block")
+    all_links[1].click
+    expect(find_el(:css, "h1.careers__main-heading").text).to include('Join Our Team')
+  end
+
   it 'link Contact Us' do
-    click_upcase_link 'Contact Us'
+    find_el(:class, "re-header__menu-item--company").click
+    all_links = find_els(:css, "li.re-header__menu-item--company a.re-header__dropdown-block")
+    all_links[2].click
     expect(find_el(:css, "h1.contacts__heading").text).to include('Have questions? Contact us!')
   end
 
