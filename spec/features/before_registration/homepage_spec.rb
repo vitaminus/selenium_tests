@@ -52,6 +52,13 @@ describe "Homepage" do
     expect(find_el(:css, "h1.contacts__heading").text).to include('Have questions? Contact us!')
   end
 
+  it 'link Press Resources' do
+    find_el(:class, "re-header__menu-item--company").click
+    all_links = find_els(:css, "li.re-header__menu-item--company a.re-header__dropdown-block")
+    all_links[3].click
+    expect(find_el(:css, "h1.press-panel__heading").text).to include('Press')
+  end
+
   # it 'link Blog' do
   #   click_upcase_link 'Blog'
   #   @wait.until { find_el(:class, 'aside-box-title').displayed? }
