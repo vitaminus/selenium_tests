@@ -217,6 +217,30 @@ module FeatureSeleniumHelpers
     end
   end
 
+  def choose_strategy_with_enough_miles name
+    @long_wait.until { find_el(:class, "strategies__list").displayed? }
+    @strategies_list = find_el(:class, "strategies__list")
+    @strategies_list.find_elements(:class, "strategy").each do |s|
+      logo = s.find_element(:class, 'strategy__program-logo')
+      if logo[:alt].downcase.include? (name).downcase
+        s.find_element(:css, '.strategy__earn-time-label.strategy__earn-time-label--ready-to-book').click
+        break
+      end
+    end
+  end
+
+def choose_booking_program name
+    @long_wait.until { find_el(:class, "booking__other-programs").displayed? }
+    @strategies_list = find_el(:class, "booking__other-programs")
+    @strategies_list.find_elements(:class, "reward-program").each do |s|
+      logo = s.find_element(:class, 'reward-program__program-logo')
+      if logo[:alt].downcase.include? (name).downcase
+        s.find_element(:css, '.reward-program__booking-btn').click
+        break
+      end
+    end
+  end
+
   def choose_credit_score score
     @wait.until { find_el(:css, "label.step-card__radio-label.step-card__radio-label--credit-score-#{score}").displayed? }
     expect(find_el(:css, "h1.step-card__main-heading").text).to include "Jumpstart your mileage balance"
