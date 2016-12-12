@@ -143,6 +143,14 @@ module FeatureSeleniumHelpers
     expect(find_el(:css, ".wallet__primary-btn.wallet__choice-btn").text).to include(("Add your miles and points").upcase)
   end
 
+  def register_for_signup
+    if find_els(:css, '.rewardexpert__mobile-invisible a.button--register').size > 0
+      find_el(:css, '.rewardexpert__mobile-invisible a.button--register').click
+    else
+      click_upcase_link 'Register'
+    end
+  end
+
   def social_sign_in name
     @wait.until { find_el(:link, "LOG IN").displayed? }
     find_el(:link, "LOG IN").click
