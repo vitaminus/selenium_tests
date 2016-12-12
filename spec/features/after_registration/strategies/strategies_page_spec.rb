@@ -34,12 +34,7 @@ describe "Strategies page" do
     tell_me_more 'Ultimate Rewards®'
     @wait.until { find_el(:class, "routes").displayed? }
     routes_list = find_el(:class, "routes")
-    first_page_routes_count = routes_list.find_elements(:class, "route").count
-    expect(first_page_routes_count).to eq 10
-    find_el(:link, ('Next').upcase).click
-    routes_list = find_el(:class, "routes")
-    second_page_routes_count = routes_list.find_elements(:class, "route").count
-    expect(second_page_routes_count).to eq 3
+    click_upcase_link "Show more routes"
     find_el(:link, ('Program').upcase).click
     @wait.until { find_el(:css, 'h3.strategy-info__title').displayed? }
     strategy_info = find_els(:css, 'h3.strategy-info__title')
@@ -48,7 +43,7 @@ describe "Strategies page" do
     find_el(:link, ('Routes').upcase).click
     routes_list = find_el(:class, "routes")
     second_page_routes_count = routes_list.find_elements(:class, "route").count
-    expect(second_page_routes_count).to eq 3
+    expect(second_page_routes_count).to eq 13
     logout
   end
 
