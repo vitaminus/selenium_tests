@@ -131,8 +131,6 @@ describe "Wallet" do
     close_learning_popup
     autoupdate_credentials alaska_mileage_plan_user
     autoupdate_answer
-    close_flash_message
-    sleep 2
     wallet_cancel_button
     logout
   end
