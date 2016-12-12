@@ -127,9 +127,11 @@ module FeatureSeleniumHelpers
     # puts find_els(:css, 'a.button--register').empty?
     # logout if find_els(:css, 'a.button--register').size == 0
     @new_user = new_user
-    # TODO for new upper menu
-    # find_el(:css, '.rewardexpert__mobile-invisible a.button--register').click
-    click_upcase_link 'Register'
+    if find_els(:css, '.rewardexpert__mobile-invisible a.button--register').size > 0
+      find_el(:css, '.rewardexpert__mobile-invisible a.button--register').click
+    else
+      click_upcase_link 'Register'
+    end
     find_el(:id, "auth__name").send_keys(@new_user)
     find_el(:id, "auth__email").send_keys(@new_user)
     find_el(:id, "auth__password").send_keys(@new_user)
