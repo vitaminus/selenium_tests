@@ -109,10 +109,10 @@ describe "User" do
     find_el(:link, "LOG IN WITH GOOGLE+").click
     unless find_els(:id, 'Email').size == 0
       @wait.until { find_el(:id, 'Email').displayed? }
-      find_el(:id, "Email").send_keys('testrewardexpert@gmail.com')
+      find_el(:id, "Email").send_keys('testitreward@gmail.com')
       find_el(:xpath,"//input[@value='Next']").click
       @wait.until { find_el(:id, 'Passwd').displayed? }
-      find_el(:id, "Passwd").send_keys('testr3ward')
+      find_el(:id, "Passwd").send_keys('r3wardexpert')
       find_el(:xpath,"//input[@value='Sign in']").click
       unless find_els(:id, 'submit_approve_access').size == 0
         @wait.until { find_el(:id, 'submit_approve_access').displayed? }
@@ -123,8 +123,8 @@ describe "User" do
     sleep 0.5
     expect(find_el(:css, '.aside__current-trip-region span.aside__menu-location').text).to eq 'Amsterdam'
     numbers = find_el(:class, 'select-card__balance').find_elements(:css, 'span.select-card__balance-cell')
-    expect(numbers[0].text).to eq '2'
-    expect(numbers[1].text).to eq '5'
+    expect(numbers[0].text).to eq '5'
+    expect(numbers[1].text).to eq '0'
     expect(numbers[2].text).to eq '0'
     expect(numbers[3].text).to eq '0'
     expect(numbers[4].text).to eq '0'
