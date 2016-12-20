@@ -137,8 +137,8 @@ describe "User" do
   it 'Log In via email Without Choosing a Strategy - USL9' do
     @wait.until { find_el(:link, "LOG IN").displayed? }
     find_el(:link, "LOG IN").click
-    find_el(:id, "auth__email").send_keys('testrewardexpert@gmail.com')
-    find_el(:id, "auth__password").send_keys('testr3ward')
+    find_el(:id, "auth__email").send_keys('newtestitreward@gmail.com')
+    find_el(:id, "auth__password").send_keys('r3wardexpert')
     find_el(:xpath,"//input[@value='Log in']").click
     @wait.until { find_el(:css, '.select-card__expand-link.select-card__expand-link--suggested-cards.select-card__expand-link--see-all').displayed? }
     sleep 0.5
