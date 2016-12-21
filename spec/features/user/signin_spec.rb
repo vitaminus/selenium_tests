@@ -110,10 +110,10 @@ describe "User" do
     unless find_els(:id, 'Email').size == 0
       @wait.until { find_el(:id, 'Email').displayed? }
       find_el(:id, "Email").send_keys('testitreward@gmail.com')
-      find_el(:xpath,"//input[@value='Next']").click
+      find_el(:id, 'next').click
       @wait.until { find_el(:id, 'Passwd').displayed? }
       find_el(:id, "Passwd").send_keys('r3wardexpert')
-      find_el(:xpath,"//input[@value='Sign in']").click
+      find_el(:id, 'signIn').click
       unless find_els(:id, 'submit_approve_access').size == 0
         @wait.until { find_el(:id, 'submit_approve_access').displayed? }
         find_el(:id, "submit_approve_access").click
