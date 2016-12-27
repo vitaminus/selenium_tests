@@ -745,4 +745,23 @@ def choose_booking_program name
     sleep 3
     @wait.until { expect(find_el(:css, "span.cabinet__mileage").text).to include(miles) }
   end
+
+  ####### Booking ########
+
+  def booking_step1_links
+    @wait.until { find_el(:class, 'booking-step__external-link').displayed? }
+    find_el(:class, 'booking-step__external-link').click
+    sleep 2
+    close_window
+    @wait.until { find_el(:id, 'booking-step__how-to-buy-link').displayed? }
+    find_el(:id, 'booking-step__how-to-buy-link').click
+    sleep 2
+    close_window
+  end
+
+  def booking_continue
+    find_el(:css, '.booking-steps__control.booking-steps__control--next').click
+  end
+
+
 end
