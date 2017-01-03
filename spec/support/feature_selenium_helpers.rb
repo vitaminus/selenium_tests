@@ -763,5 +763,12 @@ def choose_booking_program name
     find_el(:css, '.booking-steps__control.booking-steps__control--next').click
   end
 
+  def departure_date
+    departure_date = Date.today.strftime('%Y/%m/%d')
+  end
+
+  def return_date
+    return_date = (Date.today + 5).strftime('%Y/%m/%d')
+  end
 
 end
