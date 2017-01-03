@@ -4,6 +4,7 @@ require 'capybara/dsl'
 # require 'selenium-webdriver'
 # require 'capybara-screenshot/rspec'
 require 'support/feature_selenium_helpers'
+require 'pry'
 
 page_paths  = File.join(Dir.pwd, 'spec', 'pages', '**', '*.rb')
 Dir.glob(page_paths).each { |file| require file }
