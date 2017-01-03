@@ -40,19 +40,43 @@ describe "Book tickets" do
     monthly_spending
     choose_strategy_with_enough_miles "MileagePlus®"
     choose_booking_program "MileagePlus®"
-    @wait.until { find_el(:class, 'booking-step__external-link').displayed? }
-    find_el(:class, 'booking-step__external-link').click
+    booking_step1_links
+
+    booking_continue
+
+    expect(find_el(:class, 'parameter-field__result--economy').text).to include ('Economy').upcase
+    sleep 2
+    expect(find_el(:class, 'parameter-field__result--roundtrip').text).to include ('Roundtrip').upcase
+    expect(find_el(:id, 'booking-step__cost')[:value]).to eq '60000'
+    expect(find_el(:id, 'booking-step__fees')[:value]).to eq '200'
+
+    booking_continue
+
+    expect(find_el(:class, 'booking-step__transferable-rate--with_bonus').text).to include ('2:1')
+    @wait.until { find_el(:class, 'booking-step__transfer-btn').displayed? }
+    find_el(:class, 'booking-step__transfer-btn').click
     sleep 2
     close_window
-    @wait.until { find_el(:id, 'booking-step__how-to-buy-link').displayed? }
-    find_el(:id, 'booking-step__how-to-buy-link').click
+    @wait.until { find_el(:class, 'booking-step__transferable-help-link').displayed? }
+    find_el(:class, 'booking-step__transferable-help-link').click
+    sleep 2
     close_window
-    @wait.until { find_el(:css, '.booking-steps__control.booking-steps__control--next').displayed? }
-    find_el(:css, '.booking-steps__control.booking-steps__control--next').click
-   
-   
 
-    sleep 5
+    booking_continue
+
+    booking_step__data = find_el(:class, 'booking-step__result--table').find_elements(:class, 'booking-step__data')
+    expect(booking_step__data[0].text).to eq 'New York, NY'
+    expect(booking_step__data[1].text).to eq departure_date
+    expect(booking_step__data[2].text).to eq 'London'
+    expect(booking_step__data[3].text).to eq return_date
+    expect(booking_step__data[4].text).to eq 'Economy'
+    expect(booking_step__data[5].text).to eq 'Roundtrip'
+
+    booking_step__count = find_el(:class, 'booking-step__result--table').find_elements(:class, 'booking-step__count')
+    expect(booking_step__count[0].text).to eq '60000'
+    expect(booking_step__count[1].text).to eq '200'
+
+
 
   end
 
