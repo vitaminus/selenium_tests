@@ -17,14 +17,16 @@ describe "Book tickets" do
   end
 
   it 'Starwood strategy - BT1' do
-    
-    
     sign_in_for_booking
     choose_strategy_with_enough_miles "MileagePlus®"
     choose_booking_program "MileagePlus®"
     booking_step1_links
 
     booking_continue
+
+    location_field__from = find_el(:class, 'booking-step__form').find_elements(:class, 'location-field__input--from')
+    expect(location_field__from[0].text).to eq 'New York, NY'
+    sleep 2
 
     expect(find_el(:class, 'parameter-field__result--economy').text).to include ('Economy').upcase
     sleep 2
@@ -59,8 +61,9 @@ describe "Book tickets" do
     expect(booking_step__count[1].text).to eq '200'
 
     find_els(:class, 'booking-step__checkbox-label')[1].click
-    sleep 5
+    sleep 2
     find_els(:class, 'booking-step__checkbox-label')[0].click
+    find_els(:class, 'booking-step__checkbox-label')[1].click
 
 
   end
