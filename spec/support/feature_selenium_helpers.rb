@@ -52,6 +52,10 @@ module FeatureSeleniumHelpers
     {email: 'vitamin@vitamin.com', passwd: '123456789', name: 'vitaminus'}
   end
 
+  def booking_user
+    {email: 'booking_user_do_not_delete@booking.com', passwd: '123456789', name: 'booking_user_do_not_delete@booking.com'}
+  end
+
   ####### Autoupdate users ########
 
   def starwood_user
@@ -120,6 +124,14 @@ module FeatureSeleniumHelpers
     find_el(:link_text, "LOG IN").click
     find_el(:id, "auth__email").send_keys(test_user[:email])
     find_el(:id, "auth__password").send_keys(test_user[:passwd])
+    find_el(:xpath,"//input[@value='Log in']").click
+  end
+
+  def sign_in_for_booking
+    @wait.until { find_el(:link_text, "LOG IN").displayed? }
+    find_el(:link_text, "LOG IN").click
+    find_el(:id, "auth__email").send_keys(booking_user[:email])
+    find_el(:id, "auth__password").send_keys(booking_user[:passwd])
     find_el(:xpath,"//input[@value='Log in']").click
   end
 

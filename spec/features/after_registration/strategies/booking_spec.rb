@@ -17,27 +17,9 @@ describe "Book tickets" do
   end
 
   it 'Starwood strategy - BT1' do
-    register
-    wallet_add_new
-    add_program_from_wallet 1
-    close_learning_popup
-    switch_to_manual
-    enter_balance 60000
-    sleep 2
-    @wait.until { find_el(:css, 'h2.wallet__panel-heading.wallet__panel-heading--not-empty').displayed? }
-    wallet_add_more
-    sleep 1.5
-    el = find_els(:class, "accounts__block-name")[18]
-    el.location_once_scrolled_into_view
-    el.click
-    sleep 1
-    find_el(:class, 'cards-and-programs__save-btn').click
-    enter_balance 30000
     
-    @wait.until { find_el(:css, 'h2.wallet__panel-heading.wallet__panel-heading--not-empty').displayed? }
-    go_to_current_goal
-    fill_in_waypoint('JFK', 'LHR')
-    monthly_spending
+    
+    sign_in_for_booking
     choose_strategy_with_enough_miles "MileagePlus®"
     choose_booking_program "MileagePlus®"
     booking_step1_links
@@ -76,6 +58,9 @@ describe "Book tickets" do
     expect(booking_step__count[0].text).to eq '60000'
     expect(booking_step__count[1].text).to eq '200'
 
+    find_els(:class, 'booking-step__checkbox-label')[1].click
+    sleep 5
+    find_els(:class, 'booking-step__checkbox-label')[0].click
 
 
   end
