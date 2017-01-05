@@ -783,4 +783,19 @@ def choose_booking_program name
     return_date = (Date.today + 5).strftime('%Y/%m/%d')
   end
 
+  def share_trip
+    find_els(:class, 'booking-step__checkbox-label')[1].click
+    sleep 0.5
+    find_el(:link, ('Share this trip').upcase).click
+    sleep 2
+    close_window
+    find_el(:link, ('Share again')).click
+    find_els(:class, 'booking-step__checkbox-label')[0].click
+    find_el(:link, ('Share this trip').upcase).click
+    sleep 2
+    close_window
+    find_el(:link, ('Share again')).click
+    #@wait.until { find_el(:link, ('Share this trip').displayed? }
+  end
+
 end
