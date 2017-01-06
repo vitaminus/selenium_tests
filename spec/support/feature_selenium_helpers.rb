@@ -811,4 +811,13 @@ def choose_booking_program name
     #@wait.until { find_el(:link, ('Share this trip').displayed? }
   end
 
+  def booking_open_social_link
+    find_el(:link, ('facebook')).click
+    sleep 1
+    close_window
+    sleep 1
+    find_el(:link, ('twitter')).click
+    close_window
+  end
+
 end

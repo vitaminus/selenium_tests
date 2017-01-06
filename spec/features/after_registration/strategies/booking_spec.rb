@@ -66,7 +66,8 @@ describe "Book tickets" do
     booking_step_count = find_el(:class, 'booking-step__result--table').find_elements(:class, 'booking-step__count')
     expect(booking_step_count[0].text).to eq '60000'
     expect(booking_step_count[1].text).to eq '200'
-
+    expect(find_els(:css, 'span.booking-step__data')[6].text.gsub(/(\d+ )/, '')).to eq 'miles'
+    booking_open_social_link
     share_trip
     #facebook failed cause there is a bug 6630
     logout
@@ -108,7 +109,8 @@ describe "Book tickets" do
     booking_step_count = find_el(:class, 'booking-step__result--table').find_elements(:class, 'booking-step__count')
     expect(booking_step_count[0].text).to eq '45000'
     expect(booking_step_count[1].text).to eq '200'
-
+    expect(find_els(:css, 'span.booking-step__data')[6].text.gsub(/(\d+ )/, '')).to eq 'miles'
+    booking_open_social_link
     share_trip
     #facebook failed cause there is a bug 6630
     logout
@@ -152,7 +154,8 @@ describe "Book tickets" do
     booking_step_count = find_el(:class, 'booking-step__result--table').find_elements(:class, 'booking-step__count')
     expect(booking_step_count[0].text).to eq '95000'
     expect(booking_step_count[1].text).to eq '0'
-
+    expect(find_els(:css, 'span.booking-step__data')[6].text.gsub(/(\d+ )/, '')).to eq 'miles'
+    booking_open_social_link
     share_trip
     #facebook failed cause there is a bug 6630
     logout
@@ -207,7 +210,8 @@ describe "Book tickets" do
     booking_step_count = find_el(:class, 'booking-step__result--table').find_elements(:class, 'booking-step__count')
     expect(booking_step_count[0].text).to eq '26000'
     expect(booking_step_count[1].text).to eq '240'
-
+    expect(find_els(:css, 'span.booking-step__data')[6].text.gsub(/(\d+ )/, '')).to eq 'Avios'
+    booking_open_social_link
     share_trip
     #facebook failed cause there is a bug 6630
     logout
