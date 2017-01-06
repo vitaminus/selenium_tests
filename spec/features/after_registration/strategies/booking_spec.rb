@@ -27,7 +27,6 @@ describe "Book tickets" do
     expect(header_info_data[1].text).to eq '67,500'
     expect(header_info_data[2].text).to eq 'N/A'
     expect(header_info_data[3].text).to eq '1-800-864-8331'
-    
     booking_step1_links
 
     booking_continue
@@ -115,8 +114,6 @@ describe "Book tickets" do
     #facebook failed cause there is a bug 6630
     logout
   end
-
-
 
   it 'Point Based Strategy - BT3' do
     sign_in_for_booking
@@ -214,6 +211,59 @@ describe "Book tickets" do
     booking_open_social_link
     share_trip
     #facebook failed cause there is a bug 6630
+    logout
+  end
+
+  it 'Go_Back Button after step 1' do
+    sign_in_for_cb_booking
+    choose_strategy_with_enough_miles "AAdvantage®"
+    choose_booking_program "AAdvantage®"
+    @wait.until { find_el(:id, 'header-region').displayed? }
+    find_el(:css, 'span.rewardexpert__mobile-invisible').click
+    sleep 1
+    expect(find_el(:css, 'h2.booking__body-heading').text).to eq 'Program(s) with enough miles/points to book.'
+    logout
+  end
+
+  it 'Go_Back Button after step 2' do
+    sign_in_for_cb_booking
+    choose_strategy_with_enough_miles "AAdvantage®"
+    choose_booking_program "AAdvantage®"
+    @wait.until { find_el(:css, '.booking-steps__control.booking-steps__control--next').displayed? }
+    booking_continue
+    @wait.until { find_el(:id, 'header-region').displayed? }
+    find_el(:css, 'span.rewardexpert__mobile-invisible').click
+    sleep 1
+    expect(find_el(:css, 'h2.booking__body-heading').text).to eq 'Program(s) with enough miles/points to book.'
+    logout
+  end
+
+  it 'Go_Back Button after step 3' do
+    sign_in_for_booking
+    choose_strategy_with_enough_miles "Iberia Plus"
+    choose_booking_program "Iberia Plus"
+    @wait.until { find_el(:css, '.booking-steps__control.booking-steps__control--next').displayed? }
+    booking_continue
+    booking_continue
+    @wait.until { find_el(:id, 'header-region').displayed? }
+    find_el(:css, 'span.rewardexpert__mobile-invisible').click
+    @wait.until { find_el(:css, 'h2.booking__body-heading').displayed? }
+    expect(find_el(:css, 'h2.booking__body-heading').text).to eq 'Program(s) with enough miles/points to book.'
+    logout
+  end
+
+  it 'Go_Back Button after step 4' do
+    sign_in_for_booking
+    choose_strategy_with_enough_miles "Iberia Plus"
+    choose_booking_program "Iberia Plus"
+    @wait.until { find_el(:css, '.booking-steps__control.booking-steps__control--next').displayed? }
+    booking_continue
+    booking_continue
+    booking_continue
+    @wait.until { find_el(:id, 'header-region').displayed? }
+    find_el(:css, 'span.rewardexpert__mobile-invisible').click
+    @wait.until { find_el(:css, 'h2.booking__body-heading').displayed? }
+    expect(find_el(:css, 'h2.booking__body-heading').text).to eq 'Program(s) with enough miles/points to book.'
     logout
   end
 
