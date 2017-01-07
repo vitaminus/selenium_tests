@@ -267,4 +267,15 @@ describe "Book tickets" do
     logout
   end
 
+  it 'Click on previous button after step 1' do
+    sign_in_for_booking
+    choose_strategy_with_enough_miles "Iberia Plus"
+    choose_booking_program "Iberia Plus"
+    @wait.until { find_el(:css, '.booking-steps__control.booking-steps__control--next').displayed? }
+    booking_continue
+    booking_previous
+    expect(find_el(:css, 'h1.booking-step__heading').text).to eq 'Time to Check the Availability of Your Award Ticket'
+    logout
+   end
+
 end

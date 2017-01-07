@@ -788,6 +788,10 @@ def choose_booking_program name
     find_el(:css, '.booking-steps__control.booking-steps__control--next').click
   end
 
+  def booking_previous
+    find_el(:css, '.booking-steps__control.booking-steps__control--prev').click
+  end
+
   def departure_date
     departure_date = Date.today.strftime('%Y/%m/%d')
   end
