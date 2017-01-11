@@ -276,6 +276,56 @@ describe "Book tickets" do
     booking_previous
     expect(find_el(:css, 'h1.booking-step__heading').text).to eq 'Time to Check the Availability of Your Award Ticket'
     logout
-   end
+  end
+
+  it 'Click on previous button after step 2' do
+    sign_in_for_booking
+    choose_strategy_with_enough_miles "Iberia Plus"
+    choose_booking_program "Iberia Plus"
+    @wait.until { find_el(:css, '.booking-steps__control.booking-steps__control--next').displayed? }
+    booking_continue
+    booking_continue
+    booking_previous
+    expect(find_els(:css, 'h1.booking-step__heading')[1].text).to eq 'Check the value of the ticket you are planning to book.'
+    logout
+  end
+
+  it 'Click on previous button after step 3' do
+    sign_in_for_booking
+    choose_strategy_with_enough_miles "Iberia Plus"
+    choose_booking_program "Iberia Plus"
+    @wait.until { find_el(:css, '.booking-steps__control.booking-steps__control--next').displayed? }
+    booking_continue
+    booking_continue
+    booking_continue
+    booking_previous
+    expect(find_els(:css, 'h1.booking-step__heading')[2].text).to eq 'Ready to Book? You need to transfer points first.'
+    logout
+  end
+
+  it 'Click on previous button after step 3 to step 1' do
+    sign_in_for_booking
+    choose_strategy_with_enough_miles "Iberia Plus"
+    choose_booking_program "Iberia Plus"
+    @wait.until { find_el(:css, '.booking-steps__control.booking-steps__control--next').displayed? }
+    booking_continue
+    booking_continue
+    booking_continue
+    booking_previous
+    booking_previous
+    booking_previous
+    expect(find_els(:css, 'h1.booking-step__heading')[0].text).to eq 'Time to Check the Availability of Your Award Ticket'
+    logout
+  end
+
+  it 'Click on upper book_block on strategies_page' do
+    sign_in_for_booking
+    @wait.until { find_el(:class, 'strategies__book-link').displayed? }
+    find_el(:class, 'rewardexpert__mobile-invisible').click
+    choose_booking_program "Iberia Plus"
+    @wait.until { find_el(:css, '.booking-steps__control.booking-steps__control--next').displayed? }
+    expect(find_els(:css, 'h1.booking-step__heading')[0].text).to eq 'Time to Check the Availability of Your Award Ticket'
+    logout
+  end
 
 end
