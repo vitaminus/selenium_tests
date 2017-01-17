@@ -266,7 +266,7 @@ module FeatureSeleniumHelpers
     end
   end
 
-def choose_booking_program name
+  def choose_booking_program name
     @long_wait.until { find_el(:class, "booking__other-programs").displayed? }
     @strategies_list = find_el(:class, "booking__other-programs")
     @strategies_list.find_elements(:class, "reward-program").each do |s|
@@ -823,5 +823,54 @@ def choose_booking_program name
     find_el(:link, ('twitter')).click
     close_window
   end
+
+  def choose_booking_program_column name, column
+    @wait.until { find_el(:css, '.reward-program__column.reward-program__column--balance').displayed? }
+    @strategies_list = find_el(:class, "booking__other-programs")
+    @strategies_list.find_elements(:class, "reward-program").each do |s|
+      logo = s.find_element(:class, 'reward-program__program-logo')
+      if logo[:alt].downcase.include? (name).downcase
+        case column
+        when 'estimated_cost'
+          estimated_cost = s.find_elements(:class, 'reward-program__cost')[0]
+          expect(estimated_cost.text.gsub(/( AVIOS)|( MILES)|( POINTS)/, '')).to include('26,000').or include('95,000')
+          expect(estimated_cost.text.gsub(/(\d+,\d+ )/, '')).to include('AVIOS').or include('MILES').or include('POINTS')
+        end
+        break
+      end
+    end
+  end
+
+  def booking_program_tooltip name, strategy_type
+    puts strategy_type
+    @long_wait.until { find_el(:class, 'booking__other-programs').displayed? }
+    @strategies_list = find_el(:class, 'booking__other-programs')
+    @strategies_list.find_elements(:class, 'reward-program').each do |s|
+      logo = s.find_element(:class, 'reward-program__program-logo')
+      if logo[:alt].downcase.include? (name).downcase
+        s.find_element(:css, '.reward-program__balance').click
+        sleep 1
+        case strategy_type
+        when 'starwood'
+          expect(s.find_elements(:class, 'info-block-tooltip__name')[0].text).to eq 'Executive Club'
+          expect(s.find_elements(:class, 'info-block-tooltip__program-balance')[0].text).to eq '0 avios'
+          expect(s.find_elements(:class, 'info-block-tooltip__name')[1].text).to eq 'Starwood Preferred Guest®'
+          expect(s.find_elements(:class, 'info-block-tooltip__program-balance')[1].text).to eq '60,000 starpoints®'
+          expect(s.find_elements(:class, 'info-block-tooltip__rate')[0].text).to eq 'Transfer rate: 1:1'.upcase
+          el = s.find_elements(:class, 'info-block-tooltip__name')[2]
+          el.location_once_scrolled_into_view
+          expect(s.find_elements(:class, 'info-block-tooltip__name')[2].text).to eq 'Membership Rewards®'
+          el = s.find_elements(:class, 'info-block-tooltip__rate')[1]
+          el.location_once_scrolled_into_view
+          expect(s.find_elements(:class, 'info-block-tooltip__rate')[1].text).to eq 'Transfer rate: 1:0.8'.upcase
+          expect(s.find_elements(:class, 'info-block-tooltip__program-balance')[2].text).to eq '28,800 points'
+          expect(s.find_element(:class, 'info-block-tooltip__bonus').text).to eq 'Starwood Preferred Guest® transfer bonus of 15,000 Avios'
+        #when 'co_branded'
+         end
+       break
+      end
+    end
+  end
+
 
 end
