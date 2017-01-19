@@ -832,12 +832,30 @@ module FeatureSeleniumHelpers
       if logo[:alt].downcase.include? (name).downcase
         case column
         when 'estimated_cost'
-          estimated_cost = s.find_elements(:class, 'reward-program__cost')[0]
-          expect(estimated_cost.text.gsub(/( AVIOS)|( MILES)|( POINTS)/, '')).to include('26,000').or include('95,000')
-          expect(estimated_cost.text.gsub(/(\d+,\d+ )/, '')).to include('AVIOS').or include('MILES').or include('POINTS')
+          reward_program_cost = s.find_elements(:class, 'reward-program__cost')[0].text
+          data = booking_program_data name
+          expect(reward_program_cost.split[0]).to eq data[:cost]
+          expect(reward_program_cost.split[1]).to eq data[:program_point_name]
+          expect(s.find_element(:css, 'span.reward-program__fee').text).to eq data[:taxes]
+        when 'balance_with_transfer'
+          reward_program_miles = s.find_elements(:class, 'reward-program__tooltip-block')[0].text
+          data = booking_program_data name
+          expect(reward_program_miles.split[0]).to eq data[:balance]
+          expect(reward_program_miles.split[1]).to eq data[:balance_point_name]
         end
         break
       end
+    end
+  end
+
+  def booking_program_data name
+    case name
+    when 'Executive Club'
+      { cost: '26,000', program_point_name: 'AVIOS', taxes: '240', balance: '103,800', balance_point_name: 'AVIOS' }
+    when 'Barclaycard Arrival Rewards Program'
+      { cost: '95,000', program_point_name: 'MILES', taxes: '0', balance: '120,000', balance_point_name: 'MILES' }
+    when 'Iberia Plus'
+      { cost: '26,000', program_point_name: 'AVIOS', taxes: '240', balance: '28,800', balance_point_name: 'AVIOS' }
     end
   end
 
