@@ -336,8 +336,12 @@ describe "Book tickets" do
       sleep 3
       find_el(:class, 'strategies__book-link').click
       choose_booking_program_column 'Executive Club', 'estimated_cost'
-      #booking_program_tooltip 'Executive Club', 'starwood'
-
+      choose_booking_program_column 'Executive Club', 'balance_with_transfer'
+      choose_booking_program_column 'Barclaycard Arrival Rewards Program', 'estimated_cost'
+      choose_booking_program_column 'Barclaycard Arrival Rewards Program', 'balance_with_transfer'
+      choose_booking_program_column 'Iberia Plus', 'estimated_cost'
+      choose_booking_program_column 'Iberia Plus', 'balance_with_transfer'
+      booking_program_tooltip 'Executive Club', 'starwood'
       logout
   end
 
