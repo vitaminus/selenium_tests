@@ -861,7 +861,7 @@ module FeatureSeleniumHelpers
     end
   end
 
-  def booking_program_tooltip name, strategy_type
+  def booking_program_column name, strategy_type
     @long_wait.until { find_el(:class, 'booking__other-programs').displayed? }
     @strategies_list = find_el(:class, 'booking__other-programs')
     @strategies_list.find_elements(:class, 'reward-program').each do |s|
