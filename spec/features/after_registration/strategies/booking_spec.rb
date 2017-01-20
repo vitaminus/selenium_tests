@@ -330,7 +330,7 @@ describe "Book tickets" do
     logout
   end
 
-  it 'Tooltip Starwood strategy' do
+  it 'Check booking program columns' do
       sign_in_for_booking
       @wait.until { find_el(:class, 'strategies__book-link').displayed? }
       sleep 3
@@ -341,8 +341,22 @@ describe "Book tickets" do
       choose_booking_program_column 'Barclaycard Arrival Rewards Program', 'balance_with_transfer'
       choose_booking_program_column 'Iberia Plus', 'estimated_cost'
       choose_booking_program_column 'Iberia Plus', 'balance_with_transfer'
+      booking_program_tooltip 'Barclaycard Arrival Rewards Program', 'point_based'
+      sleep 1
       booking_program_tooltip 'Executive Club', 'starwood'
+      sleep 1
+      booking_program_tooltip 'Iberia Plus', 'transferable'
       logout
+  end
+
+  it 'Check booking program columns for co-branded strategy' do
+     sign_in_for_cb_booking
+     @wait.until { find_el(:class, 'strategies__book-link').displayed? }
+     sleep 3
+     find_el(:class, 'strategies__book-link').click
+     choose_booking_program_column 'AAdvantage®', 'estimated_cost'
+     choose_booking_program_column 'AAdvantage®', 'balance_with_transfer'
+     booking_program_tooltip 'AAdvantage®', 'co_branded'
   end
 
 end
