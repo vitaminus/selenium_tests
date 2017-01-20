@@ -869,37 +869,41 @@ module FeatureSeleniumHelpers
       if logo[:alt].downcase.include? (name).downcase
         s.find_element(:css, '.reward-program__balance').click
         sleep 1
+        names = s.find_elements(:class, 'info-block-tooltip__name')
+        balances = s.find_elements(:class, 'info-block-tooltip__program-balance')
+        rates = s.find_elements(:class, 'info-block-tooltip__rate')
+        messages = s.find_elements(:class, 'reward-program__enough-for-message')
         case strategy_type
         when 'starwood'
-        expect(s.find_elements(:class, 'info-block-tooltip__name')[0].text).to eq 'Executive Club'
-        expect(s.find_elements(:class, 'info-block-tooltip__program-balance')[0].text).to eq '0 avios'
-        expect(s.find_elements(:class, 'info-block-tooltip__name')[1].text).to eq 'Starwood Preferred Guest®'
-        expect(s.find_elements(:class, 'info-block-tooltip__program-balance')[1].text).to eq '60,000 starpoints®'
-        expect(s.find_elements(:class, 'info-block-tooltip__rate')[0].text).to eq 'Transfer rate: 1:1'.upcase
-        el = s.find_elements(:class, 'info-block-tooltip__name')[2]
-        el.location_once_scrolled_into_view
-        expect(s.find_elements(:class, 'info-block-tooltip__name')[2].text).to eq 'Membership Rewards®'
-        el = s.find_elements(:class, 'info-block-tooltip__rate')[1]
-        el.location_once_scrolled_into_view
-        expect(s.find_elements(:class, 'info-block-tooltip__rate')[1].text).to eq 'Transfer rate: 1:0.8'.upcase
-        expect(s.find_elements(:class, 'info-block-tooltip__program-balance')[2].text).to eq '28,800 points'
-        expect(s.find_element(:class, 'info-block-tooltip__bonus').text).to eq 'Starwood Preferred Guest® transfer bonus of 15,000 Avios'
-        expect(s.find_elements(:class, 'reward-program__enough-for-message')[0].text).to eq 'Enough for 3 roundtrip ticket(s)'
+          expect(names[0].text).to eq 'Executive Club'
+          expect(balances[0].text).to eq '0 avios'
+          expect(names[1].text).to eq 'Starwood Preferred Guest®'
+          expect(balances[1].text).to eq '60,000 starpoints®'
+          expect(rates[0].text).to eq 'Transfer rate: 1:1'.upcase
+          el = names[2]
+          el.location_once_scrolled_into_view
+          expect(names[2].text).to eq 'Membership Rewards®'
+          el = rates[1]
+          el.location_once_scrolled_into_view
+          expect(rates[1].text).to eq 'Transfer rate: 1:0.8'.upcase
+          expect(balances[2].text).to eq '28,800 points'
+          expect(s.find_element(:class, 'info-block-tooltip__bonus').text).to eq 'Starwood Preferred Guest® transfer bonus of 15,000 Avios'
+          expect(messages[0].text).to eq 'Enough for 3 roundtrip ticket(s)'
         when 'co_branded'
-          expect(s.find_elements(:class, 'info-block-tooltip__name')[0].text).to eq 'AAdvantage®'
-          expect(s.find_elements(:class, 'info-block-tooltip__program-balance')[0].text).to eq '60,000 miles'
-          expect(s.find_elements(:class, 'reward-program__enough-for-message')[0].text).to eq 'Enough for 1 roundtrip ticket(s)'
+          expect(names[0].text).to eq 'AAdvantage®'
+          expect(balances[0].text).to eq '60,000 miles'
+          expect(messages[0].text).to eq 'Enough for 1 roundtrip ticket(s)'
         when 'point_based'
-          expect(s.find_elements(:class, 'info-block-tooltip__name')[0].text).to eq 'Barclaycard Arrival Rewards Program'
-          expect(s.find_elements(:class, 'info-block-tooltip__program-balance')[0].text).to eq '120,000 miles'
-          expect(s.find_elements(:class, 'reward-program__enough-for-message')[0].text).to eq 'Enough for 1 roundtrip ticket(s)'
+          expect(names[0].text).to eq 'Barclaycard Arrival Rewards Program'
+          expect(balances[0].text).to eq '120,000 miles'
+          expect(messages[0].text).to eq 'Enough for 1 roundtrip ticket(s)'
         when 'transferable'
-          expect(s.find_elements(:class, 'info-block-tooltip__name')[0].text).to eq 'Iberia Plus'
-          expect(s.find_elements(:class, 'info-block-tooltip__program-balance')[0].text).to eq '0 avios'
-          expect(s.find_elements(:class, 'info-block-tooltip__name')[1].text).to eq 'Membership Rewards®'
-          expect(s.find_elements(:class, 'info-block-tooltip__program-balance')[1].text).to eq '28,800 points'
-          expect(s.find_elements(:class, 'info-block-tooltip__rate')[0].text).to eq 'Transfer rate: 1:0.8'.upcase
-          expect(s.find_elements(:class, 'reward-program__enough-for-message')[0].text).to eq 'Enough for 1 roundtrip ticket(s)'
+          expect(names[0].text).to eq 'Iberia Plus'
+          expect(balances[0].text).to eq '0 avios'
+          expect(names[1].text).to eq 'Membership Rewards®'
+          expect(balances[1].text).to eq '28,800 points'
+          expect(rates[0].text).to eq 'Transfer rate: 1:0.8'.upcase
+          expect(messages[0].text).to eq 'Enough for 1 roundtrip ticket(s)'
          end
        break
       end
