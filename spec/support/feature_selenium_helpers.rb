@@ -909,6 +909,4 @@ module FeatureSeleniumHelpers
       end
     end
   end
-
-
 end

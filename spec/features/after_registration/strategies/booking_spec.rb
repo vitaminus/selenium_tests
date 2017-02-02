@@ -166,7 +166,7 @@ describe "Book tickets" do
     @wait.until { find_el(:id, 'header-region').displayed? }
     header_info_data = find_els(:css, 'span.header__info-data')
     expect(header_info_data[0].text).to eq 'Iberia Plus'
-    expect(header_info_data[1].text).to eq '36,000'
+    expect(header_info_data[1].text).to eq '28,800'
     expect(header_info_data[2].text).to eq 'N/A'
     expect(header_info_data[3].text).to eq '1-800-772-4642'
     booking_step1_links
@@ -318,11 +318,11 @@ describe "Book tickets" do
     logout
   end
 
-  it 'Click on upper book_block on strategies_page' do
+  it 'Click on upper book link on strategies page' do
     sign_in_for_booking
     @wait.until { find_el(:class, 'strategies__book-link').displayed? }
     find_el(:class, 'rewardexpert__mobile-invisible').click
-    sleep 1
+    @wait.until { find_el(:css, 'h1.booking__panel-heading').displayed? }
     expect(find_el(:css, 'h1.booking__panel-heading').text).to include ('London')
     choose_booking_program "Iberia Plus"
     @wait.until { find_el(:css, '.booking-steps__control.booking-steps__control--next').displayed? }
