@@ -358,4 +358,30 @@ describe "Book tickets" do
     choose_booking_program_column 'AAdvantage®', 'balance_with_transfer'
     booking_program_column 'AAdvantage®', 'co_branded'
   end
+
+  it 'Start booking tickets with concierge button' do
+    sign_in_for_booking
+    @wait.until { find_el(:class, 'strategies__book-link').displayed? }
+    find_el(:class, 'strategies__book-link').click
+    @wait.until { find_el(:class, 'booking-concierge__start').displayed? }
+    find_el(:class, 'booking-concierge__start').click
+    sleep 1
+    @d.switch_to.frame(2)
+    expect(find_el(:class, 'intercom-team-profile-full-team-name').text).to include 'RewardExpert'
+    @d.switch_to.default_content
+    logout
+  end
+
+  it 'Book with concierge button' do
+    sign_in_for_booking
+    @wait.until { find_el(:class, 'strategies__book-link').displayed? }
+    find_el(:class, 'strategies__book-link').click
+    @wait.until { find_el(:class, 'reward-program__concierge-booking-btn').displayed? }
+    find_el(:class, 'reward-program__concierge-booking-btn').click
+    sleep 1
+    @d.switch_to.frame(2)
+    expect(find_el(:class, 'intercom-team-profile-full-team-name').text).to include 'RewardExpert'
+    @d.switch_to.default_content
+    logout
+  end
 end
